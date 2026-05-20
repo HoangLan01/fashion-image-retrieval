@@ -1,0 +1,51 @@
+seed: 42
+
+dataset:
+  name: synthetic
+  categories: [dress]
+  size: 8
+  image_size: 32
+  num_workers: 0
+
+model:
+  embedding_dim: 64
+  image_encoder:
+    type: mock
+    pool_size: 7
+  text_encoder:
+    type: simple
+    max_length: 24
+  composition:
+    num_blocks: 1
+    num_heads: 4
+    ffn_multiplier: 2
+    dropout: 0.1
+
+loss:
+  temperature: 0.07
+  symmetric: true
+  label_smoothing: 0.1
+
+optimizer:
+  name: adamw
+  image_lr: 1.0e-4
+  text_lr: 1.0e-4
+  composition_lr: 1.0e-4
+  weight_decay: 0.0
+
+scheduler:
+  name: none
+
+training:
+  epochs: 1
+  batch_size: 4
+  grad_accumulation: 1
+  amp: false
+  clip_grad_norm: 1.0
+  eval_every: 1
+  output_dir: outputs/synthetic_smoke
+
+evaluation:
+  batch_size: 4
+  recall_ks: [1, 5]
+  exclude_query: true
