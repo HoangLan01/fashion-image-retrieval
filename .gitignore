@@ -5,7 +5,7 @@ __pycache__/
 .ruff_cache/
 
 outputs/
-data/
+/data/
 *.pt
 *.pth
 *.ckpt
