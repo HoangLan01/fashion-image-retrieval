@@ -37,6 +37,7 @@ Improved config:
 ```bash
 python train.py --config configs/fashioniq.yaml --category dress
 python evaluate.py --config configs/fashioniq.yaml --checkpoint outputs/fashioniq_improved/dress/best.pt --category dress
+python scripts/retrieve_demo.py --config configs/fashioniq.yaml --checkpoint outputs/fashioniq_improved/dress/best.pt --category dress --query-index 0 --top-k 10 --output outputs/retrieval_demo/dress/query0.jpg
 ```
 
 Baseline reproduction config:

@@ -161,6 +161,53 @@ python evaluate.py --config configs/fashioniq.yaml --checkpoint outputs/fashioni
 python evaluate.py --config configs/fashioniq.yaml --checkpoint outputs/fashioniq_improved/toptee/best.pt --category toptee
 ```
 
+### 8.1. Xem kết quả trực quan từ `best.pt`
+
+Nếu bạn chỉ muốn xem metric tổng quát, dùng `evaluate.py` như phần trên. Kết quả sẽ in ra dạng:
+
+```text
+[dress] {'recall@10': 0.1234, 'recall@50': 0.4567}
+```
+
+Trong đó `recall@10` là tỉ lệ query có ảnh đích nằm trong 10 ảnh model trả về đầu tiên; `recall@50` tương tự với 50 ảnh đầu tiên.
+
+Nếu muốn nhìn trực tiếp các ảnh được retrieve, dùng script demo:
+
+```bash
+python scripts/retrieve_demo.py --config configs/fashioniq.yaml --checkpoint outputs/fashioniq_improved/dress/best.pt --category dress --query-index 0 --top-k 10 --output outputs/retrieval_demo/dress/query0.jpg --json-output outputs/retrieval_demo/dress/query0.json
+```
+
+Script này sẽ:
+
+- Nạp model từ `best.pt`.
+- Lấy một query trong tập validation theo `--query-index`.
+- Encode toàn bộ gallery validation của category tương ứng.
+- In ra top-K ảnh gần nhất theo score.
+- Tạo contact sheet tại đường dẫn `--output` để bạn mở lên xem query và các ảnh top-K.
+- Nếu truyền `--json-output`, lưu thêm file JSON chứa `image_id`, `score`, và đường dẫn ảnh.
+
+Ví dụ nếu file checkpoint của bạn đang nằm ngay trong thư mục project với tên `best.pt`:
+
+```bash
+python evaluate.py --config configs/fashioniq.yaml --checkpoint best.pt --category dress
+python scripts/retrieve_demo.py --config configs/fashioniq.yaml --checkpoint best.pt --category dress --query-index 0 --top-k 10 --output outputs/retrieval_demo/dress/query0.jpg
+```
+
+Xem nhiều query khác nhau:
+
+```bash
+python scripts/retrieve_demo.py --config configs/fashioniq.yaml --checkpoint best.pt --category dress --query-index 1 --top-k 10 --output outputs/retrieval_demo/dress/query1.jpg
+python scripts/retrieve_demo.py --config configs/fashioniq.yaml --checkpoint best.pt --category dress --query-index 2 --top-k 10 --output outputs/retrieval_demo/dress/query2.jpg
+```
+
+Dùng ảnh query tự chọn và câu mô tả tự nhập:
+
+```bash
+python scripts/retrieve_demo.py --config configs/fashioniq.yaml --checkpoint best.pt --category dress --query-image data/fashioniq/images/<image_id>.jpg --text "make it sleeveless and darker" --top-k 10 --output outputs/retrieval_demo/dress/custom.jpg
+```
+
+Lưu ý: `--category` phải khớp với category mà checkpoint đã train. Ví dụ checkpoint train bằng `dress` thì evaluate/demo với `--category dress`.
+
 ## 9. Chỉnh cấu hình theo GPU
 
 Các tham số chính nằm trong `configs/fashioniq.yaml`:
