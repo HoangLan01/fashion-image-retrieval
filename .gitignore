@@ -4,10 +4,20 @@ __pycache__/
 .mypy_cache/
 .ruff_cache/
 
+.venv/
+venv/
+env/
+.cache/
+
 outputs/
 /data/
+/images/
 *.pt
 *.pth
 *.ckpt
+*.onnx
+*.safetensors
+*.npy
+*.npz
 
 documents/*.pdf

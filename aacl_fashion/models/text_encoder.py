@@ -10,6 +10,7 @@ from torch import nn
 class TextFeatures:
     tokens: torch.Tensor
     attention_mask: torch.Tensor | None = None
+    token_labels: list[list[str]] | None = None
 
 
 def _set_trainable(module: nn.Module, trainable: bool) -> None:
@@ -23,6 +24,7 @@ class DistilBertTextEncoder(nn.Module):
         model_name: str = "distilbert-base-uncased",
         max_length: int = 128,
         freeze: bool = False,
+        cache_dir: str | None = None,
     ) -> None:
         super().__init__()
         try:
@@ -32,8 +34,8 @@ class DistilBertTextEncoder(nn.Module):
                 "Install transformers to use DistilBertTextEncoder: pip install transformers"
             ) from exc
 
-        self.tokenizer = AutoTokenizer.from_pretrained(model_name)
-        self.model = AutoModel.from_pretrained(model_name)
+        self.tokenizer = AutoTokenizer.from_pretrained(model_name, cache_dir=cache_dir)
+        self.model = AutoModel.from_pretrained(model_name, cache_dir=cache_dir)
         self.max_length = max_length
         if freeze:
             _set_trainable(self.model, False)
@@ -53,7 +55,18 @@ class DistilBertTextEncoder(nn.Module):
         )
         encoded = {key: value.to(device) for key, value in encoded.items()}
         output = self.model(**encoded)
-        return TextFeatures(tokens=output.last_hidden_state, attention_mask=encoded.get("attention_mask"))
+        token_ids = encoded.get("input_ids")
+        token_labels = None
+        if token_ids is not None:
+            token_labels = [
+                self.tokenizer.convert_ids_to_tokens(row.detach().cpu().tolist())
+                for row in token_ids
+            ]
+        return TextFeatures(
+            tokens=output.last_hidden_state,
+            attention_mask=encoded.get("attention_mask"),
+            token_labels=token_labels,
+        )
 
 
 class SimpleTextEncoder(nn.Module):
@@ -85,7 +98,15 @@ class SimpleTextEncoder(nn.Module):
 
         token_ids = torch.tensor(token_rows, dtype=torch.long, device=device)
         attention_mask = torch.tensor(mask_rows, dtype=torch.long, device=device)
-        return TextFeatures(tokens=self.projection(self.embedding(token_ids)), attention_mask=attention_mask)
+        token_labels = []
+        for ids, mask in zip(token_rows, mask_rows, strict=True):
+            labels = [chr(token) if active and 32 <= token < 127 else "[PAD]" for token, active in zip(ids, mask, strict=True)]
+            token_labels.append(labels)
+        return TextFeatures(
+            tokens=self.projection(self.embedding(token_ids)),
+            attention_mask=attention_mask,
+            token_labels=token_labels,
+        )
 
 
 def build_text_encoder(config: dict) -> nn.Module:
@@ -104,4 +125,5 @@ def build_text_encoder(config: dict) -> nn.Module:
         model_name=config.get("name", "distilbert-base-uncased"),
         max_length=int(config.get("max_length", 128)),
         freeze=bool(config.get("freeze", False)),
+        cache_dir=config.get("cache_dir"),
     )

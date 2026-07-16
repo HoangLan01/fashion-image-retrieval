@@ -67,6 +67,7 @@ DEFAULT_CONFIG: dict[str, Any] = {
         "amp": True,
         "clip_grad_norm": 1.0,
         "eval_every": 5,
+        "checkpoint_every": 1,
         "output_dir": "outputs",
     },
     "evaluation": {
@@ -96,6 +97,10 @@ def load_config(path: str | Path) -> dict[str, Any]:
 
     config = deepcopy(DEFAULT_CONFIG)
     deep_update(config, user_config)
+    config["_meta"] = {
+        "config_path": str(config_path),
+        "config_stem": config_path.stem,
+    }
     return config
 
 

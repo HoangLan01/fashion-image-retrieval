@@ -86,3 +86,82 @@ def evaluate_model(
         query_ids=query_ids,
         exclude_query=exclude_query,
     )
+
+
+def retrieval_details(
+    query_embeddings: torch.Tensor,
+    gallery_embeddings: torch.Tensor,
+    query_ids: list[str],
+    target_ids: list[str],
+    gallery_ids: list[str],
+    exclude_query: bool = True,
+) -> list[dict[str, object]]:
+    similarities = query_embeddings @ gallery_embeddings.T
+    gallery_index = {image_id: index for index, image_id in enumerate(gallery_ids)}
+    if exclude_query:
+        for row, query_id in enumerate(query_ids):
+            query_position = gallery_index.get(query_id)
+            if query_position is not None:
+                similarities[row, query_position] = -torch.inf
+
+    top_count = min(2, similarities.shape[1])
+    top_scores, top_indices = similarities.topk(top_count, dim=1)
+    rows: list[dict[str, object]] = []
+    for row_index, (query_id, target_id) in enumerate(zip(query_ids, target_ids, strict=True)):
+        target_position = gallery_index.get(target_id)
+        target_score: float | None = None
+        target_rank: int | None = None
+        if target_position is not None:
+            score_tensor = similarities[row_index, target_position]
+            target_score = float(score_tensor.item())
+            target_rank = int((similarities[row_index] > score_tensor).sum().item()) + 1
+
+        top1_index = int(top_indices[row_index, 0].item())
+        top1_score = float(top_scores[row_index, 0].item())
+        margin = None
+        if top_count > 1:
+            margin = top1_score - float(top_scores[row_index, 1].item())
+        rows.append(
+            {
+                "query_id": query_id,
+                "target_id": target_id,
+                "target_rank": target_rank,
+                "target_score": target_score,
+                "top1_id": gallery_ids[top1_index],
+                "top1_score": top1_score,
+                "top1_top2_margin": margin,
+            }
+        )
+    return rows
+
+
+@torch.no_grad()
+def evaluate_model_detailed(
+    model: torch.nn.Module,
+    query_loader,
+    gallery_loader,
+    device: torch.device,
+    recall_ks: Sequence[int] = (10, 50),
+    exclude_query: bool = True,
+    amp: bool = False,
+) -> tuple[dict[str, float], list[dict[str, object]]]:
+    gallery_embeddings, gallery_ids = encode_gallery(model, gallery_loader, device, amp=amp)
+    query_embeddings, query_ids, target_ids = encode_queries(model, query_loader, device, amp=amp)
+    metrics = recall_at_ks(
+        query_embeddings=query_embeddings,
+        gallery_embeddings=gallery_embeddings,
+        target_ids=target_ids,
+        gallery_ids=gallery_ids,
+        ks=recall_ks,
+        query_ids=query_ids,
+        exclude_query=exclude_query,
+    )
+    details = retrieval_details(
+        query_embeddings=query_embeddings,
+        gallery_embeddings=gallery_embeddings,
+        query_ids=query_ids,
+        target_ids=target_ids,
+        gallery_ids=gallery_ids,
+        exclude_query=exclude_query,
+    )
+    return metrics, details

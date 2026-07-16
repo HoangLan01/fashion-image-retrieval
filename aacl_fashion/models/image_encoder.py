@@ -24,6 +24,7 @@ class SwinImageEncoder(nn.Module):
         out_indices: Sequence[int] = (2, 3),
         pool_size: int = 7,
         freeze: bool = False,
+        cache_dir: str | None = None,
     ) -> None:
         super().__init__()
         try:
@@ -37,6 +38,7 @@ class SwinImageEncoder(nn.Module):
             pretrained=pretrained,
             features_only=True,
             out_indices=tuple(out_indices),
+            cache_dir=cache_dir,
         )
         channels = self.backbone.feature_info.channels()
         self.projections = nn.ModuleList([nn.Linear(channel, embedding_dim) for channel in channels])
@@ -114,4 +116,5 @@ def build_image_encoder(config: dict) -> nn.Module:
         out_indices=config.get("out_indices", (2, 3)),
         pool_size=pool_size,
         freeze=bool(config.get("freeze", False)),
+        cache_dir=config.get("cache_dir"),
     )

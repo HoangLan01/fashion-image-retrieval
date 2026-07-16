@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from dataclasses import dataclass
+
 import torch
 from torch import nn
 from torch.nn import functional as F
@@ -7,6 +9,14 @@ from torch.nn import functional as F
 from aacl_fashion.models.composition_module import AACLCompositionModule
 from aacl_fashion.models.image_encoder import build_image_encoder
 from aacl_fashion.models.text_encoder import TextFeatures, build_text_encoder
+
+
+@dataclass
+class QueryAttentionOutput:
+    embedding: torch.Tensor
+    attention_weights: torch.Tensor
+    image_token_count: int
+    text_features: TextFeatures
 
 
 class AACLModel(nn.Module):
@@ -38,6 +48,53 @@ class AACLModel(nn.Module):
             image_tokens,
             text_features.tokens,
             text_attention_mask=text_features.attention_mask,
+        )
+
+    def encode_query_with_context_intervention(
+        self,
+        query_images: torch.Tensor,
+        captions: list[str] | tuple[str, ...],
+        intervention: str,
+    ) -> torch.Tensor:
+        """Encode queries after an inference-only intervention on global context.
+
+        ``shuffled`` cyclically moves each block's learned context vector between
+        samples in the batch. ``uniform`` replaces learned token attention with a
+        uniform distribution over valid image and text tokens. The default
+        ``encode_query`` and training paths are unaffected.
+        """
+        image_tokens = self.encode_image_tokens(query_images)
+        text_features = self.encode_text(captions)
+        return self.composition(
+            image_tokens,
+            text_features.tokens,
+            text_attention_mask=text_features.attention_mask,
+            context_intervention=intervention,
+        )
+
+    def encode_query_with_attention(
+        self,
+        query_images: torch.Tensor,
+        captions: list[str] | tuple[str, ...],
+    ) -> QueryAttentionOutput:
+        """Encode a query and expose additive-attention weights for inference analysis.
+
+        The regular ``encode_query`` and training ``forward`` paths remain unchanged and
+        do not retain attention tensors.
+        """
+        image_tokens = self.encode_image_tokens(query_images)
+        text_features = self.encode_text(captions)
+        embedding, attention_weights = self.composition(
+            image_tokens,
+            text_features.tokens,
+            text_attention_mask=text_features.attention_mask,
+            return_attention=True,
+        )
+        return QueryAttentionOutput(
+            embedding=embedding,
+            attention_weights=attention_weights,
+            image_token_count=int(image_tokens.shape[1]),
+            text_features=text_features,
         )
 
     def forward(

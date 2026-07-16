@@ -132,6 +132,48 @@ Train improved config với AdamW + cosine schedule + symmetric InfoNCE + dropou
 python train.py --config configs/fashioniq.yaml --category dress
 ```
 
+Nếu NVIDIA L40 đang được chia sẻ và chỉ còn khoảng 25 GiB VRAM, dùng cấu hình thận trọng:
+
+```bash
+source .venv/bin/activate
+CUDA_VISIBLE_DEVICES=0 python train.py --config configs/fashioniq_l40_probe.yaml --category dress
+```
+
+Probe trên chạy một epoch và ghi peak VRAM vào `outputs/fashioniq_probe/l40_probe_seed42/dress/metrics.csv`.
+Nếu peak reserved memory an toàn so với phần VRAM còn trống, bắt đầu full run:
+
+```bash
+CUDA_VISIBLE_DEVICES=0 python train.py --config configs/fashioniq_l40_shared.yaml --category dress
+```
+
+Cấu hình này dùng micro-batch 8 và gradient accumulation 4. Optimizer effective batch là 32,
+nhưng batch-softmax loss vẫn chỉ thấy 8 mẫu trong từng forward, tức 7 in-batch negatives cho
+mỗi query. Cần ghi rõ khác biệt này khi so sánh với một lần chạy batch 32 thực.
+
+Artifact được lưu tại:
+
+```text
+outputs/fashioniq_improved/l40_shared_seed42/dress/
+  best.pt
+  latest.pt
+  metrics.csv
+  metrics.jsonl
+  config.resolved.yaml
+  run.json
+  run_summary.json
+```
+
+Pretrained weights được cache trong `.cache/huggingface/hub`, đường dẫn này đã bị loại khỏi Git.
+
+Nếu job bị ngắt sau khi đã lưu `latest.pt`:
+
+```bash
+CUDA_VISIBLE_DEVICES=0 python train.py --config configs/fashioniq_l40_shared.yaml --category dress --resume auto
+```
+
+Nếu chạy lại từ đầu vào đúng run directory, chương trình sẽ từ chối ghi đè. Chỉ dùng
+`--overwrite` khi chủ động muốn thay các artifact cũ.
+
 Train cả ba category:
 
 ```bash
@@ -153,6 +195,20 @@ Evaluate một category:
 python evaluate.py --config configs/fashioniq.yaml --checkpoint outputs/fashioniq_improved/dress/best.pt --category dress
 ```
 
+Xuất kết quả có cấu trúc để dùng trong báo cáo:
+
+```bash
+python evaluate.py \
+  --config configs/fashioniq_l40_shared.yaml \
+  --checkpoint outputs/fashioniq_improved/l40_shared_seed42/dress/best.pt \
+  --category dress \
+  --json-output outputs/fashioniq_improved/l40_shared_seed42/dress/evaluation.json \
+  --per-query-output outputs/fashioniq_improved/l40_shared_seed42/dress/per_query.csv
+```
+
+File `per_query.csv` chứa rank của target, target score, top-1 ID, top-1 score và chênh lệch
+top-1/top-2 cho từng query.
+
 Evaluate cả ba category với cùng checkpoint chỉ phù hợp nếu checkpoint đó được train theo cách bạn muốn dùng chung. Thực tế nên evaluate từng checkpoint theo từng category:
 
 ```bash
@@ -160,6 +216,53 @@ python evaluate.py --config configs/fashioniq.yaml --checkpoint outputs/fashioni
 python evaluate.py --config configs/fashioniq.yaml --checkpoint outputs/fashioniq_improved/shirt/best.pt --category shirt
 python evaluate.py --config configs/fashioniq.yaml --checkpoint outputs/fashioniq_improved/toptee/best.pt --category toptee
 ```
+
+### 8.1. Xem kết quả trực quan từ `best.pt`
+
+Nếu bạn chỉ muốn xem metric tổng quát, dùng `evaluate.py` như phần trên. Kết quả sẽ in ra dạng:
+
+```text
+[dress] {'recall@10': 0.1234, 'recall@50': 0.4567}
+```
+
+Trong đó `recall@10` là tỉ lệ query có ảnh đích nằm trong 10 ảnh model trả về đầu tiên; `recall@50` tương tự với 50 ảnh đầu tiên.
+
+Nếu muốn nhìn trực tiếp các ảnh được retrieve, dùng script demo:
+
+```bash
+python scripts/retrieve_demo.py --config configs/fashioniq.yaml --checkpoint outputs/fashioniq_improved/dress/best.pt --category dress --query-index 0 --top-k 10 --output outputs/retrieval_demo/dress/query0.jpg --json-output outputs/retrieval_demo/dress/query0.json
+```
+
+Script này sẽ:
+
+- Nạp model từ `best.pt`.
+- Lấy một query trong tập validation theo `--query-index`.
+- Encode toàn bộ gallery validation của category tương ứng.
+- In ra top-K ảnh gần nhất theo score.
+- Tạo contact sheet tại đường dẫn `--output` để bạn mở lên xem query và các ảnh top-K.
+- Nếu truyền `--json-output`, lưu thêm file JSON chứa `image_id`, `score`, và đường dẫn ảnh.
+
+Ví dụ nếu file checkpoint của bạn đang nằm ngay trong thư mục project với tên `best.pt`:
+
+```bash
+python evaluate.py --config configs/fashioniq.yaml --checkpoint best.pt --category dress
+python scripts/retrieve_demo.py --config configs/fashioniq.yaml --checkpoint best.pt --category dress --query-index 0 --top-k 10 --output outputs/retrieval_demo/dress/query0.jpg
+```
+
+Xem nhiều query khác nhau:
+
+```bash
+python scripts/retrieve_demo.py --config configs/fashioniq.yaml --checkpoint best.pt --category dress --query-index 1 --top-k 10 --output outputs/retrieval_demo/dress/query1.jpg
+python scripts/retrieve_demo.py --config configs/fashioniq.yaml --checkpoint best.pt --category dress --query-index 2 --top-k 10 --output outputs/retrieval_demo/dress/query2.jpg
+```
+
+Dùng ảnh query tự chọn và câu mô tả tự nhập:
+
+```bash
+python scripts/retrieve_demo.py --config configs/fashioniq.yaml --checkpoint best.pt --category dress --query-image data/fashioniq/images/<image_id>.jpg --text "make it sleeveless and darker" --top-k 10 --output outputs/retrieval_demo/dress/custom.jpg
+```
+
+Lưu ý: `--category` phải khớp với category mà checkpoint đã train. Ví dụ checkpoint train bằng `dress` thì evaluate/demo với `--category dress`.
 
 ## 9. Chỉnh cấu hình theo GPU
 

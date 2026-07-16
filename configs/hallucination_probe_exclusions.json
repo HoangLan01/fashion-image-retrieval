@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "policy": "Exclude only records found during pre-rating QA to have a source/target category mismatch or a caption unrelated to the intended FashionIQ category. Never exclude based on retrieval quality or similarity.",
+  "records": [
+    {
+      "category": "dress",
+      "query_id": "B008LTJG3E",
+      "target_id": "B00D4JNBC8",
+      "reason": "Source is a dress, target is a shoe, and both captions request a boot/shoe; invalid as an in-domain dress calibration prompt."
+    }
+  ]
+}
