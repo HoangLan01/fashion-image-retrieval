@@ -1,0 +1,1 @@
+{"R@1": 12.5, "R@5": 75.0, "duration_seconds": 0.101, "epoch": 1, "evaluated": true, "lr_composition": 0.0001, "lr_image_encoder": 0.0001, "lr_text_encoder": 0.0001, "timestamp_utc": "2026-07-13T07:49:53.552170+00:00", "train_loss": 1.387068510055542}

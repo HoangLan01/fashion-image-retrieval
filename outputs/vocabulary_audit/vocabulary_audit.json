@@ -1,0 +1,105 @@
+{
+  "root": "data/fashioniq",
+  "categories": [
+    "dress",
+    "shirt",
+    "toptee"
+  ],
+  "splits": [
+    "train",
+    "val"
+  ],
+  "holdout_concept": "T-shirt surface forms: t-shirt, t shirt, tshirt, tee; singular/plural",
+  "rows": [
+    {
+      "category": "dress",
+      "split": "train",
+      "path": "data/fashioniq/captions/cap.dress.train.json",
+      "records": 5985,
+      "captions": 11970,
+      "matching_records": 3,
+      "matching_captions": 3,
+      "surface_occurrences": {
+        "t-shirt": 2,
+        "t shirt": 0,
+        "tshirt": 0,
+        "tee": 1
+      }
+    },
+    {
+      "category": "dress",
+      "split": "val",
+      "path": "data/fashioniq/captions/cap.dress.val.json",
+      "records": 2017,
+      "captions": 4034,
+      "matching_records": 4,
+      "matching_captions": 4,
+      "surface_occurrences": {
+        "t-shirt": 0,
+        "t shirt": 3,
+        "tshirt": 0,
+        "tee": 1
+      }
+    },
+    {
+      "category": "shirt",
+      "split": "train",
+      "path": "data/fashioniq/captions/cap.shirt.train.json",
+      "records": 5988,
+      "captions": 11976,
+      "matching_records": 483,
+      "matching_captions": 504,
+      "surface_occurrences": {
+        "t-shirt": 147,
+        "t shirt": 150,
+        "tshirt": 49,
+        "tee": 159
+      }
+    },
+    {
+      "category": "shirt",
+      "split": "val",
+      "path": "data/fashioniq/captions/cap.shirt.val.json",
+      "records": 2038,
+      "captions": 4076,
+      "matching_records": 167,
+      "matching_captions": 178,
+      "surface_occurrences": {
+        "t-shirt": 55,
+        "t shirt": 58,
+        "tshirt": 23,
+        "tee": 42
+      }
+    },
+    {
+      "category": "toptee",
+      "split": "train",
+      "path": "data/fashioniq/captions/cap.toptee.train.json",
+      "records": 6027,
+      "captions": 12054,
+      "matching_records": 261,
+      "matching_captions": 273,
+      "surface_occurrences": {
+        "t-shirt": 79,
+        "t shirt": 34,
+        "tshirt": 45,
+        "tee": 115
+      }
+    },
+    {
+      "category": "toptee",
+      "split": "val",
+      "path": "data/fashioniq/captions/cap.toptee.val.json",
+      "records": 1961,
+      "captions": 3922,
+      "matching_records": 94,
+      "matching_captions": 97,
+      "surface_occurrences": {
+        "t-shirt": 29,
+        "t shirt": 10,
+        "tshirt": 8,
+        "tee": 50
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "average": null,
+  "categories": {
+    "toptee": {
+      "R@10": 23.04946455889852,
+      "R@50": 50.07649158592555
+    }
+  },
+  "checkpoint": "outputs/fashioniq_improved/l40_shared_seed42/toptee/best.pt",
+  "checkpoint_category": "toptee",
+  "checkpoint_epoch": 55,
+  "config": "configs/fashioniq_l40_shared.yaml",
+  "created_at_utc": "2026-07-14T10:26:55.125656+00:00",
+  "device": "cuda:0"
+}

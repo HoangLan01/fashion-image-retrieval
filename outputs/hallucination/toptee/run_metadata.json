@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "config": "configs/fashioniq_l40_shared.yaml",
+  "checkpoint": "outputs/fashioniq_improved/l40_shared_seed42/toptee/best.pt",
+  "checkpoint_epoch": 55,
+  "checkpoint_best_epoch": 55,
+  "category": "toptee",
+  "device": "cuda:0",
+  "amp": true,
+  "top_k": 5,
+  "num_prompts": 60,
+  "num_ranked_rows": 300,
+  "prompts_file": "outputs/hallucination/prompts.json",
+  "mixed_gallery": false,
+  "mixed_gallery_reason": "Each category uses a separately trained checkpoint; a mixed gallery would confound prompt robustness with category routing."
+}

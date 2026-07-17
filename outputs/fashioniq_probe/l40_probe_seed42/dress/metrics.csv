@@ -1,0 +1,2 @@
+R@10,R@50,duration_seconds,epoch,evaluated,lr_composition,lr_image_encoder,lr_text_encoder,peak_allocated_gib,peak_reserved_gib,timestamp_utc,train_loss
+2.974714923153198,9.17203767972236,175.61,1,True,0.0003,1e-05,1e-05,5.379,5.598,2026-07-13T08:05:58.728785+00:00,1.9017770038569037

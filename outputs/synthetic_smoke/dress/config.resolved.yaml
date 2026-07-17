@@ -1,0 +1,66 @@
+seed: 42
+dataset:
+  name: synthetic
+  root: data/fashioniq
+  categories:
+  - dress
+  caption_mode: concat
+  image_size: 32
+  resize_size: 256
+  num_workers: 0
+  size: 8
+model:
+  embedding_dim: 64
+  image_encoder:
+    type: mock
+    name: swin_base_patch4_window7_224.ms_in22k_ft_in1k
+    pretrained: true
+    out_indices:
+    - 2
+    - 3
+    pool_size: 7
+    freeze: false
+  text_encoder:
+    type: simple
+    name: distilbert-base-uncased
+    max_length: 24
+    freeze: false
+  composition:
+    num_blocks: 1
+    num_heads: 4
+    ffn_multiplier: 2
+    dropout: 0.1
+loss:
+  temperature: 0.07
+  symmetric: true
+  label_smoothing: 0.1
+optimizer:
+  name: adamw
+  image_lr: 0.0001
+  text_lr: 0.0001
+  composition_lr: 0.0001
+  weight_decay: 0.0
+  momentum: 0.9
+scheduler:
+  name: none
+  step_size: 10
+  gamma: 0.1
+  eta_min: 1.0e-06
+training:
+  epochs: 1
+  batch_size: 4
+  grad_accumulation: 1
+  amp: false
+  clip_grad_norm: 1.0
+  eval_every: 1
+  checkpoint_every: 1
+  output_dir: outputs/synthetic_smoke
+evaluation:
+  batch_size: 4
+  recall_ks:
+  - 1
+  - 5
+  exclude_query: true
+_meta:
+  config_path: configs/synthetic_smoke.yaml
+  config_stem: synthetic_smoke

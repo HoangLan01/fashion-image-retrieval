@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-07-15T10:33:48.466847+00:00",
+  "config": "configs/fashioniq_l40_shared.yaml",
+  "checkpoint": "outputs/fashioniq_improved/l40_shared_seed42/shirt/best.pt",
+  "checkpoint_epoch": 45,
+  "category": "shirt",
+  "n_queries": 2038,
+  "evaluation_batch_size": 16,
+  "seed": 42,
+  "inference_only": true,
+  "definitions": {
+    "shuffled": "At every block, cyclically shift learned context vectors by one sample within each fixed evaluation batch.",
+    "uniform": "At every block, replace learned token attention with equal weights over valid image and text tokens."
+  },
+  "variants": {
+    "full": {
+      "R@10": 16.830225711481845,
+      "R@50": 40.77526987242395,
+      "delta_R@10_vs_full": 0.0,
+      "delta_R@50_vs_full": 0.0,
+      "MRR": 0.08639009246956728,
+      "median_target_rank": 86.0,
+      "mean_target_rank_change_vs_full": 0.0,
+      "target_rank_change_bootstrap_95_ci": [
+        0.0,
+        0.0
+      ],
+      "target_rank_change_sign_flip_pvalue": 1.0,
+      "target_rank_change_sign_flip_method": "not_applicable",
+      "mean_embedding_cosine_to_full": 1.0,
+      "mean_top5_overlap_with_full": 5.0,
+      "unchanged_top1_fraction": 1.0
+    },
+    "shuffled": {
+      "R@10": 1.2757605495583906,
+      "R@50": 3.434739941118744,
+      "delta_R@10_vs_full": -15.554465161923455,
+      "delta_R@50_vs_full": -37.340529931305205,
+      "MRR": 0.006199955392496536,
+      "median_target_rank": 2080.0,
+      "mean_target_rank_change_vs_full": 1885.7875368007851,
+      "target_rank_change_bootstrap_95_ci": [
+        1797.9722154072622,
+        1972.4108439646711
+      ],
+      "target_rank_change_sign_flip_pvalue": 0.0001999600079984003,
+      "target_rank_change_sign_flip_method": "monte_carlo_5000",
+      "mean_embedding_cosine_to_full": 0.2222936898469925,
+      "mean_top5_overlap_with_full": 0.09371933267909716,
+      "unchanged_top1_fraction": 0.010304219823356232
+    },
+    "uniform": {
+      "R@10": 4.36702649656526,
+      "R@50": 13.052011776251227,
+      "delta_R@10_vs_full": -12.463199214916585,
+      "delta_R@50_vs_full": -27.72325809617272,
+      "MRR": 0.021747779494963534,
+      "median_target_rank": 951.5,
+      "mean_target_rank_change_vs_full": 1202.7095191364083,
+      "target_rank_change_bootstrap_95_ci": [
+        1126.4180937193325,
+        1279.8183267909715
+      ],
+      "target_rank_change_sign_flip_pvalue": 0.0001999600079984003,
+      "target_rank_change_sign_flip_method": "monte_carlo_5000",
+      "mean_embedding_cosine_to_full": 0.48186108469963074,
+      "mean_top5_overlap_with_full": 0.35132482826300293,
+      "unchanged_top1_fraction": 0.03729146221786065
+    }
+  }
+}

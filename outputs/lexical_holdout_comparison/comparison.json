@@ -1,0 +1,287 @@
+{
+  "baseline_root": "outputs/fashioniq_improved/l40_shared_seed42",
+  "bootstrap_samples": 5000,
+  "holdout_root": "outputs/fashioniq_lexical_holdout/seed42",
+  "results": {
+    "shirt": {
+      "baseline_full": {
+        "R@10": 16.830225711481845,
+        "R@50": 40.77526987242395,
+        "median_target_rank": 86.0,
+        "mrr": 0.08639009246956728,
+        "queries": 2038
+      },
+      "baseline_targeted": {
+        "R@10": 10.179640718562874,
+        "R@50": 31.137724550898206,
+        "median_target_rank": 144.0,
+        "mrr": 0.05827869137407967,
+        "queries": 167
+      },
+      "holdout_full": {
+        "R@10": 18.253189401373895,
+        "R@50": 39.842983316977424,
+        "median_target_rank": 91.0,
+        "mrr": 0.08838128319209147,
+        "queries": 2038
+      },
+      "holdout_targeted": {
+        "R@10": 7.18562874251497,
+        "R@50": 19.760479041916167,
+        "median_target_rank": 186.0,
+        "mrr": 0.03838721304154284,
+        "queries": 167
+      },
+      "paired_targeted": {
+        "delta_R@10_bootstrap_95ci": [
+          -7.18562874251497,
+          1.1976047904191618
+        ],
+        "delta_R@10_percentage_points": -2.9940119760479043,
+        "delta_R@50_bootstrap_95ci": [
+          -17.964071856287426,
+          -4.790419161676647
+        ],
+        "delta_R@50_percentage_points": -11.377245508982035,
+        "queries": 167,
+        "rank_equal": 2,
+        "rank_improved": 61,
+        "rank_worsened": 104
+      },
+      "surface_breakdown": {
+        "t shirt": {
+          "baseline_R@10": 16.071428571428573,
+          "baseline_R@50": 35.714285714285715,
+          "holdout_R@10": 8.928571428571429,
+          "holdout_R@50": 19.642857142857142,
+          "paired": {
+            "delta_R@10_bootstrap_95ci": [
+              -17.857142857142858,
+              1.7857142857142856
+            ],
+            "delta_R@10_percentage_points": -7.142857142857142,
+            "delta_R@50_bootstrap_95ci": [
+              -26.785714285714285,
+              -7.142857142857142
+            ],
+            "delta_R@50_percentage_points": -16.071428571428573,
+            "queries": 56,
+            "rank_equal": 2,
+            "rank_improved": 17,
+            "rank_worsened": 37
+          },
+          "queries": 56
+        },
+        "t-shirt": {
+          "baseline_R@10": 9.25925925925926,
+          "baseline_R@50": 31.48148148148148,
+          "holdout_R@10": 9.25925925925926,
+          "holdout_R@50": 22.22222222222222,
+          "paired": {
+            "delta_R@10_bootstrap_95ci": [
+              -7.4074074074074066,
+              7.4074074074074066
+            ],
+            "delta_R@10_percentage_points": 0.0,
+            "delta_R@50_bootstrap_95ci": [
+              -22.22222222222222,
+              3.7037037037037033
+            ],
+            "delta_R@50_percentage_points": -9.25925925925926,
+            "queries": 54,
+            "rank_equal": 0,
+            "rank_improved": 18,
+            "rank_worsened": 36
+          },
+          "queries": 54
+        },
+        "tee": {
+          "baseline_R@10": 7.142857142857142,
+          "baseline_R@50": 28.57142857142857,
+          "holdout_R@10": 4.761904761904762,
+          "holdout_R@50": 23.809523809523807,
+          "paired": {
+            "delta_R@10_bootstrap_95ci": [
+              -7.142857142857142,
+              0.0
+            ],
+            "delta_R@10_percentage_points": -2.380952380952381,
+            "delta_R@50_bootstrap_95ci": [
+              -19.047619047619047,
+              9.523809523809524
+            ],
+            "delta_R@50_percentage_points": -4.761904761904762,
+            "queries": 42,
+            "rank_equal": 0,
+            "rank_improved": 19,
+            "rank_worsened": 23
+          },
+          "queries": 42
+        },
+        "tshirt": {
+          "baseline_R@10": 0.0,
+          "baseline_R@50": 13.636363636363635,
+          "holdout_R@10": 0.0,
+          "holdout_R@50": 0.0,
+          "paired": {
+            "delta_R@10_bootstrap_95ci": [
+              0.0,
+              0.0
+            ],
+            "delta_R@10_percentage_points": 0.0,
+            "delta_R@50_bootstrap_95ci": [
+              -31.818181818181817,
+              0.0
+            ],
+            "delta_R@50_percentage_points": -13.636363636363635,
+            "queries": 22,
+            "rank_equal": 0,
+            "rank_improved": 8,
+            "rank_worsened": 14
+          },
+          "queries": 22
+        }
+      }
+    },
+    "toptee": {
+      "baseline_full": {
+        "R@10": 23.04946455889852,
+        "R@50": 50.07649158592555,
+        "median_target_rank": 50.0,
+        "mrr": 0.11438915969892385,
+        "queries": 1961
+      },
+      "baseline_targeted": {
+        "R@10": 13.829787234042554,
+        "R@50": 44.680851063829785,
+        "median_target_rank": 66.5,
+        "mrr": 0.06257944560125263,
+        "queries": 94
+      },
+      "holdout_full": {
+        "R@10": 24.47730749617542,
+        "R@50": 49.46455889852116,
+        "median_target_rank": 53.0,
+        "mrr": 0.12011802275156966,
+        "queries": 1961
+      },
+      "holdout_targeted": {
+        "R@10": 12.76595744680851,
+        "R@50": 37.234042553191486,
+        "median_target_rank": 86.5,
+        "mrr": 0.0686332627385185,
+        "queries": 94
+      },
+      "paired_targeted": {
+        "delta_R@10_bootstrap_95ci": [
+          -8.51063829787234,
+          6.382978723404255
+        ],
+        "delta_R@10_percentage_points": -1.0638297872340425,
+        "delta_R@50_bootstrap_95ci": [
+          -18.085106382978726,
+          3.1914893617021276
+        ],
+        "delta_R@50_percentage_points": -7.446808510638298,
+        "queries": 94,
+        "rank_equal": 5,
+        "rank_improved": 42,
+        "rank_worsened": 47
+      },
+      "surface_breakdown": {
+        "t shirt": {
+          "baseline_R@10": 10.0,
+          "baseline_R@50": 60.0,
+          "holdout_R@10": 30.0,
+          "holdout_R@50": 60.0,
+          "paired": {
+            "delta_R@10_bootstrap_95ci": [
+              0.0,
+              50.0
+            ],
+            "delta_R@10_percentage_points": 20.0,
+            "delta_R@50_bootstrap_95ci": [
+              -30.0,
+              30.0
+            ],
+            "delta_R@50_percentage_points": 0.0,
+            "queries": 10,
+            "rank_equal": 1,
+            "rank_improved": 5,
+            "rank_worsened": 4
+          },
+          "queries": 10
+        },
+        "t-shirt": {
+          "baseline_R@10": 13.793103448275861,
+          "baseline_R@50": 41.37931034482759,
+          "holdout_R@10": 10.344827586206897,
+          "holdout_R@50": 41.37931034482759,
+          "paired": {
+            "delta_R@10_bootstrap_95ci": [
+              -13.793103448275861,
+              6.896551724137931
+            ],
+            "delta_R@10_percentage_points": -3.4482758620689653,
+            "delta_R@50_bootstrap_95ci": [
+              -20.689655172413794,
+              20.689655172413794
+            ],
+            "delta_R@50_percentage_points": 0.0,
+            "queries": 29,
+            "rank_equal": 1,
+            "rank_improved": 13,
+            "rank_worsened": 15
+          },
+          "queries": 29
+        },
+        "tee": {
+          "baseline_R@10": 12.244897959183673,
+          "baseline_R@50": 40.816326530612244,
+          "holdout_R@10": 8.16326530612245,
+          "holdout_R@50": 28.57142857142857,
+          "paired": {
+            "delta_R@10_bootstrap_95ci": [
+              -14.285714285714285,
+              6.122448979591836
+            ],
+            "delta_R@10_percentage_points": -4.081632653061225,
+            "delta_R@50_bootstrap_95ci": [
+              -28.57142857142857,
+              4.081632653061225
+            ],
+            "delta_R@50_percentage_points": -12.244897959183673,
+            "queries": 49,
+            "rank_equal": 3,
+            "rank_improved": 21,
+            "rank_worsened": 25
+          },
+          "queries": 49
+        },
+        "tshirt": {
+          "baseline_R@10": 25.0,
+          "baseline_R@50": 50.0,
+          "holdout_R@10": 25.0,
+          "holdout_R@50": 50.0,
+          "paired": {
+            "delta_R@10_bootstrap_95ci": [
+              0.0,
+              0.0
+            ],
+            "delta_R@10_percentage_points": 0.0,
+            "delta_R@50_bootstrap_95ci": [
+              -37.5,
+              37.5
+            ],
+            "delta_R@50_percentage_points": 0.0,
+            "queries": 8,
+            "rank_equal": 0,
+            "rank_improved": 4,
+            "rank_worsened": 4
+          },
+          "queries": 8
+        }
+      }
+    }
+  }
+}

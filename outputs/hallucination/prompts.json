@@ -1,0 +1,3402 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-07-15T06:59:42.159001+00:00",
+  "config": "configs/fashioniq_l40_shared.yaml",
+  "dataset_root": "data/fashioniq",
+  "split": "val",
+  "seed": 42,
+  "selection_rule": "For each category, shuffle validation record indices with a fixed category-specific random stream and take the first distinct, non-excluded query IDs. Pre-rating exclusions are limited to documented annotation/category errors. Selection never uses retrieval scores.",
+  "exclusions": {
+    "schema_version": 1,
+    "policy": "Exclude only records found during pre-rating QA to have a source/target category mismatch or a caption unrelated to the intended FashionIQ category. Never exclude based on retrieval quality or similarity.",
+    "records": [
+      {
+        "category": "dress",
+        "query_id": "B008LTJG3E",
+        "target_id": "B00D4JNBC8",
+        "reason": "Source is a dress, target is a shoe, and both captions request a boot/shoe; invalid as an in-domain dress calibration prompt."
+      }
+    ]
+  },
+  "per_category": 10,
+  "num_probe_images": 30,
+  "num_scenarios": 6,
+  "num_prompts": 180,
+  "category_prompt_counts": {
+    "dress": 60,
+    "shirt": 60,
+    "toptee": 60
+  },
+  "scenarios": [
+    "in_domain",
+    "paraphrase",
+    "identity",
+    "contradiction",
+    "ood",
+    "unsatisfiable"
+  ],
+  "probes": [
+    {
+      "probe_id": "dress_q01",
+      "category": "dress",
+      "query_index": 1151,
+      "query_id": "B00ANK6ND0",
+      "target_id": "B00AO1VG9Y",
+      "query_image_path": "data/fashioniq/images/B00ANK6ND0.jpg",
+      "original_caption": "is lighter and has longer sleeves [SEP]  off the shoulder and less fitted",
+      "paraphrase": "Apply these requested changes: is lighter and has longer sleeves; also, off the shoulder and less fitted."
+    },
+    {
+      "probe_id": "dress_q02",
+      "category": "dress",
+      "query_index": 1713,
+      "query_id": "B004O6LVY0",
+      "target_id": "B002YX0KZ6",
+      "query_image_path": "data/fashioniq/images/B004O6LVY0.jpg",
+      "original_caption": "The dress in black in color. [SEP] is strapless and black",
+      "paraphrase": "Apply these requested changes: The dress in black in color; also, is strapless and black."
+    },
+    {
+      "probe_id": "dress_q03",
+      "category": "dress",
+      "query_index": 997,
+      "query_id": "B004PKZWNG",
+      "target_id": "B009LGLIIC",
+      "query_image_path": "data/fashioniq/images/B004PKZWNG.jpg",
+      "original_caption": "is blue in color [SEP] Has long sleeves and a blue pattern",
+      "paraphrase": "Apply these requested changes: is blue in color; also, Has long sleeves and a blue pattern."
+    },
+    {
+      "probe_id": "dress_q04",
+      "category": "dress",
+      "query_index": 814,
+      "query_id": "B00FBRGJKM",
+      "target_id": "B00FTA0HUE",
+      "query_image_path": "data/fashioniq/images/B00FBRGJKM.jpg",
+      "original_caption": "is tighter and fancier [SEP] tighter skirt and v neck",
+      "paraphrase": "Apply these requested changes: is tighter and fancier; also, tighter skirt and v neck."
+    },
+    {
+      "probe_id": "dress_q05",
+      "category": "dress",
+      "query_index": 804,
+      "query_id": "B0029YQQYE",
+      "target_id": "B004OLGO24",
+      "query_image_path": "data/fashioniq/images/B0029YQQYE.jpg",
+      "original_caption": "more purple [SEP] is longer and more maroon",
+      "paraphrase": "Apply these requested changes: more purple; also, is longer and more maroon."
+    },
+    {
+      "probe_id": "dress_q06",
+      "category": "dress",
+      "query_index": 1390,
+      "query_id": "B00DFN4MSU",
+      "target_id": "B00806NEIQ",
+      "query_image_path": "data/fashioniq/images/B00DFN4MSU.jpg",
+      "original_caption": "is shorter [SEP] is shorter and darker",
+      "paraphrase": "Apply these requested changes: is shorter; also, is shorter and darker."
+    },
+    {
+      "probe_id": "dress_q07",
+      "category": "dress",
+      "query_index": 580,
+      "query_id": "B002WV0S6G",
+      "target_id": "B0036ME5BE",
+      "query_image_path": "data/fashioniq/images/B002WV0S6G.jpg",
+      "original_caption": "is shorter and more casual [SEP] is a lot shorter in tan coloring and the straps aren't similar.",
+      "paraphrase": "Apply these requested changes: is shorter and more casual; also, is a lot shorter in tan coloring and the straps aren't similar."
+    },
+    {
+      "probe_id": "dress_q08",
+      "category": "dress",
+      "query_index": 802,
+      "query_id": "B0059817JQ",
+      "target_id": "B008UD2EAS",
+      "query_image_path": "data/fashioniq/images/B0059817JQ.jpg",
+      "original_caption": "has three colors [SEP] has more colors",
+      "paraphrase": "Apply these requested changes: has three colors; also, has more colors."
+    },
+    {
+      "probe_id": "dress_q09",
+      "category": "dress",
+      "query_index": 823,
+      "query_id": "B00B1YKB26",
+      "target_id": "B00BUVAI5K",
+      "query_image_path": "data/fashioniq/images/B00B1YKB26.jpg",
+      "original_caption": " has a  u shaped neck with red heels [SEP]  black and gray with no shoulder straps",
+      "paraphrase": "Apply these requested changes: has a  u shaped neck with red heels; also, black and gray with no shoulder straps."
+    },
+    {
+      "probe_id": "dress_q10",
+      "category": "dress",
+      "query_index": 1946,
+      "query_id": "B00BM82UCK",
+      "target_id": "B0097B5ABC",
+      "query_image_path": "data/fashioniq/images/B00BM82UCK.jpg",
+      "original_caption": "is thigh high and blue [SEP] Is blue and denim",
+      "paraphrase": "Apply these requested changes: is thigh high and blue; also, Is blue and denim."
+    },
+    {
+      "probe_id": "shirt_q01",
+      "category": "shirt",
+      "query_index": 1746,
+      "query_id": "B003JY6WY2",
+      "target_id": "B004JHRX5A",
+      "query_image_path": "data/fashioniq/images/B003JY6WY2.jpg",
+      "original_caption": "is gray colored with green and yellow design [SEP] Is grey in color",
+      "paraphrase": "Apply these requested changes: is gray colored with green and yellow design; also, Is grey in color."
+    },
+    {
+      "probe_id": "shirt_q02",
+      "category": "shirt",
+      "query_index": 21,
+      "query_id": "B0051D0X2Q",
+      "target_id": "B003INE0Q6",
+      "query_image_path": "data/fashioniq/images/B0051D0X2Q.jpg",
+      "original_caption": "is blue plaid with white button shirt [SEP] is lighter",
+      "paraphrase": "Apply these requested changes: is blue plaid with white button shirt; also, is lighter."
+    },
+    {
+      "probe_id": "shirt_q03",
+      "category": "shirt",
+      "query_index": 392,
+      "query_id": "B00B31W2TC",
+      "target_id": "B00B2JD2CQ",
+      "query_image_path": "data/fashioniq/images/B00B31W2TC.jpg",
+      "original_caption": "is lighter with shorter sleeves [SEP] is less striped",
+      "paraphrase": "Apply these requested changes: is lighter with shorter sleeves; also, is less striped."
+    },
+    {
+      "probe_id": "shirt_q04",
+      "category": "shirt",
+      "query_index": 995,
+      "query_id": "B002UQJENQ",
+      "target_id": "B004KPD8FA",
+      "query_image_path": "data/fashioniq/images/B002UQJENQ.jpg",
+      "original_caption": "is a black t shirt [SEP] has text in red",
+      "paraphrase": "Apply these requested changes: is a black t shirt; also, has text in red."
+    },
+    {
+      "probe_id": "shirt_q05",
+      "category": "shirt",
+      "query_index": 975,
+      "query_id": "B005CQAIYK",
+      "target_id": "B001B14HE2",
+      "query_image_path": "data/fashioniq/images/B005CQAIYK.jpg",
+      "original_caption": "is a lighter color and has shorter sleeves [SEP] Is white with shorter sleeves.",
+      "paraphrase": "Apply these requested changes: is a lighter color and has shorter sleeves; also, Is white with shorter sleeves."
+    },
+    {
+      "probe_id": "shirt_q06",
+      "category": "shirt",
+      "query_index": 1175,
+      "query_id": "B00B1FCGFU",
+      "target_id": "B000F5LTXW",
+      "query_image_path": "data/fashioniq/images/B00B1FCGFU.jpg",
+      "original_caption": "is blue with image of dolphins [SEP] is closer to blue",
+      "paraphrase": "Apply these requested changes: is blue with image of dolphins; also, is closer to blue."
+    },
+    {
+      "probe_id": "shirt_q07",
+      "category": "shirt",
+      "query_index": 1074,
+      "query_id": "B0095VZ8JI",
+      "target_id": "B008MHFJIQ",
+      "query_image_path": "data/fashioniq/images/B0095VZ8JI.jpg",
+      "original_caption": "Is less animal-like and more wordy [SEP] has a white chest logo",
+      "paraphrase": "Apply these requested changes: Is less animal-like and more wordy; also, has a white chest logo."
+    },
+    {
+      "probe_id": "shirt_q08",
+      "category": "shirt",
+      "query_index": 1092,
+      "query_id": "B00AOJHO56",
+      "target_id": "245600258X",
+      "query_image_path": "data/fashioniq/images/B00AOJHO56.jpg",
+      "original_caption": "Has a Hawaii summery feel with more colors [SEP] has more colors and more graphics",
+      "paraphrase": "Apply these requested changes: Has a Hawaii summery feel with more colors; also, has more colors and more graphics."
+    },
+    {
+      "probe_id": "shirt_q09",
+      "category": "shirt",
+      "query_index": 842,
+      "query_id": "B001CWN1A6",
+      "target_id": "B001L0ZVIE",
+      "query_image_path": "data/fashioniq/images/B001CWN1A6.jpg",
+      "original_caption": "is gray with long sleeves [SEP] is darker",
+      "paraphrase": "Apply these requested changes: is gray with long sleeves; also, is darker."
+    },
+    {
+      "probe_id": "shirt_q10",
+      "category": "shirt",
+      "query_index": 585,
+      "query_id": "B00AZIAZK2",
+      "target_id": "B001LY2VLK",
+      "query_image_path": "data/fashioniq/images/B00AZIAZK2.jpg",
+      "original_caption": "Is more whimsical and black [SEP] is a dark t-shirt with a graphic",
+      "paraphrase": "Apply these requested changes: Is more whimsical and black; also, is a dark t-shirt with a graphic."
+    },
+    {
+      "probe_id": "toptee_q01",
+      "category": "toptee",
+      "query_index": 1524,
+      "query_id": "B008BT599E",
+      "target_id": "B008DO6OFK",
+      "query_image_path": "data/fashioniq/images/B008BT599E.jpg",
+      "original_caption": "The shirt is black with the word DADD. [SEP] Is a regular t-shirt with different graphic.",
+      "paraphrase": "Apply these requested changes: The shirt is black with the word DADD; also, Is a regular t-shirt with different graphic."
+    },
+    {
+      "probe_id": "toptee_q02",
+      "category": "toptee",
+      "query_index": 32,
+      "query_id": "B00BB9UBNU",
+      "target_id": "B005LCCOI8",
+      "query_image_path": "data/fashioniq/images/B00BB9UBNU.jpg",
+      "original_caption": "is black and has longer sleeves [SEP] Has longer sleeves and a tighter neckline",
+      "paraphrase": "Apply these requested changes: is black and has longer sleeves; also, Has longer sleeves and a tighter neckline."
+    },
+    {
+      "probe_id": "toptee_q03",
+      "category": "toptee",
+      "query_index": 44,
+      "query_id": "B00BF6VD2M",
+      "target_id": "B00COYDU9I",
+      "query_image_path": "data/fashioniq/images/B00BF6VD2M.jpg",
+      "original_caption": "is white with longer sleeves [SEP]  with v neckline",
+      "paraphrase": "Apply these requested changes: is white with longer sleeves; also, with v neckline."
+    },
+    {
+      "probe_id": "toptee_q04",
+      "category": "toptee",
+      "query_index": 646,
+      "query_id": "B00A3QE0QQ",
+      "target_id": "B00BZQZLF2",
+      "query_image_path": "data/fashioniq/images/B00A3QE0QQ.jpg",
+      "original_caption": "is lighter [SEP] has shorter sleeves and more blue",
+      "paraphrase": "Apply these requested changes: is lighter; also, has shorter sleeves and more blue."
+    },
+    {
+      "probe_id": "toptee_q05",
+      "category": "toptee",
+      "query_index": 1840,
+      "query_id": "B007TLO9D2",
+      "target_id": "B008QYK7UK",
+      "query_image_path": "data/fashioniq/images/B007TLO9D2.jpg",
+      "original_caption": "is more witty and less inspirational [SEP] is green and with new print.",
+      "paraphrase": "Apply these requested changes: is more witty and less inspirational; also, is green and with new print."
+    },
+    {
+      "probe_id": "toptee_q06",
+      "category": "toptee",
+      "query_index": 983,
+      "query_id": "B004U8FZE4",
+      "target_id": "B00DV1FBTK",
+      "query_image_path": "data/fashioniq/images/B004U8FZE4.jpg",
+      "original_caption": "is dark brown and has sleeves [SEP] Has longer sleeves and a darker pattern",
+      "paraphrase": "Apply these requested changes: is dark brown and has sleeves; also, Has longer sleeves and a darker pattern."
+    },
+    {
+      "probe_id": "toptee_q07",
+      "category": "toptee",
+      "query_index": 649,
+      "query_id": "B00C85FTH4",
+      "target_id": "B007S9U9SE",
+      "query_image_path": "data/fashioniq/images/B00C85FTH4.jpg",
+      "original_caption": "a button up and much longer [SEP] is buttoned and has collar",
+      "paraphrase": "Apply these requested changes: a button up and much longer; also, is buttoned and has collar."
+    },
+    {
+      "probe_id": "toptee_q08",
+      "category": "toptee",
+      "query_index": 107,
+      "query_id": "B003EACZ9M",
+      "target_id": "B000YVMK30",
+      "query_image_path": "data/fashioniq/images/B003EACZ9M.jpg",
+      "original_caption": "is yellow colored [SEP] is yellow",
+      "paraphrase": "Apply these requested changes: is yellow colored; also, is yellow."
+    },
+    {
+      "probe_id": "toptee_q09",
+      "category": "toptee",
+      "query_index": 252,
+      "query_id": "B003IKOOTW",
+      "target_id": "B005ISP19Y",
+      "query_image_path": "data/fashioniq/images/B003IKOOTW.jpg",
+      "original_caption": "is black colored with sleeves [SEP] is black with white print and full sleeves on the crew neck.",
+      "paraphrase": "Apply these requested changes: is black colored with sleeves; also, is black with white print and full sleeves on the crew neck."
+    },
+    {
+      "probe_id": "toptee_q10",
+      "category": "toptee",
+      "query_index": 1110,
+      "query_id": "B0094KPUK2",
+      "target_id": "B00EIWYT08",
+      "query_image_path": "data/fashioniq/images/B0094KPUK2.jpg",
+      "original_caption": "is longer and has longer sleeves [SEP] longer",
+      "paraphrase": "Apply these requested changes: is longer and has longer sleeves; also, longer."
+    }
+  ],
+  "prompts": [
+    {
+      "prompt_id": "dress_q01_s01",
+      "probe_id": "dress_q01",
+      "scenario": "in_domain",
+      "category": "dress",
+      "query_index": 1151,
+      "query_id": "B00ANK6ND0",
+      "target_id": "B00AO1VG9Y",
+      "source_captions": [
+        "is lighter and has longer sleeves",
+        " off the shoulder and less fitted"
+      ],
+      "original_caption": "is lighter and has longer sleeves [SEP]  off the shoulder and less fitted",
+      "prompt": "is lighter and has longer sleeves [SEP]  off the shoulder and less fitted",
+      "expected_behavior": "Retrieve garments that satisfy the original FashionIQ modification.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q01_s02",
+      "probe_id": "dress_q01",
+      "scenario": "paraphrase",
+      "category": "dress",
+      "query_index": 1151,
+      "query_id": "B00ANK6ND0",
+      "target_id": "B00AO1VG9Y",
+      "source_captions": [
+        "is lighter and has longer sleeves",
+        " off the shoulder and less fitted"
+      ],
+      "original_caption": "is lighter and has longer sleeves [SEP]  off the shoulder and less fitted",
+      "prompt": "Apply these requested changes: is lighter and has longer sleeves; also, off the shoulder and less fitted.",
+      "expected_behavior": "Remain close to the in-domain result under a meaning-preserving template change.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q01_s03",
+      "probe_id": "dress_q01",
+      "scenario": "identity",
+      "category": "dress",
+      "query_index": 1151,
+      "query_id": "B00ANK6ND0",
+      "target_id": "B00AO1VG9Y",
+      "source_captions": [
+        "is lighter and has longer sleeves",
+        " off the shoulder and less fitted"
+      ],
+      "original_caption": "is lighter and has longer sleeves [SEP]  off the shoulder and less fitted",
+      "prompt": "Keep the garment exactly as it is; do not change its color, shape, material, or details.",
+      "expected_behavior": "Preserve the source garment; returning a visually close neighbour is preferable.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q01_s04",
+      "probe_id": "dress_q01",
+      "scenario": "contradiction",
+      "category": "dress",
+      "query_index": 1151,
+      "query_id": "B00ANK6ND0",
+      "target_id": "B00AO1VG9Y",
+      "source_captions": [
+        "is lighter and has longer sleeves",
+        " off the shoulder and less fitted"
+      ],
+      "original_caption": "is lighter and has longer sleeves [SEP]  off the shoulder and less fitted",
+      "prompt": "Make it both sleeveless and long-sleeved, and make it both shorter and longer.",
+      "expected_behavior": "No gallery item can satisfy every mutually contradictory requirement.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q01_s05",
+      "probe_id": "dress_q01",
+      "scenario": "ood",
+      "category": "dress",
+      "query_index": 1151,
+      "query_id": "B00ANK6ND0",
+      "target_id": "B00AO1VG9Y",
+      "source_captions": [
+        "is lighter and has longer sleeves",
+        " off the shoulder and less fitted"
+      ],
+      "original_caption": "is lighter and has longer sleeves [SEP]  off the shoulder and less fitted",
+      "prompt": "Make it play jazz music, increase its battery life, and make it smell like rain.",
+      "expected_behavior": "The request is outside the fashion-image domain; high-confidence visual compliance is unsupported.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q01_s06",
+      "probe_id": "dress_q01",
+      "scenario": "unsatisfiable",
+      "category": "dress",
+      "query_index": 1151,
+      "query_id": "B00ANK6ND0",
+      "target_id": "B00AO1VG9Y",
+      "source_captions": [
+        "is lighter and has longer sleeves",
+        " off the shoulder and less fitted"
+      ],
+      "original_caption": "is lighter and has longer sleeves [SEP]  off the shoulder and less fitted",
+      "prompt": "Turn it into a transparent glass garment with animated flames and invisible fabric.",
+      "expected_behavior": "The fixed FashionIQ gallery is not expected to contain a full match.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q02_s01",
+      "probe_id": "dress_q02",
+      "scenario": "in_domain",
+      "category": "dress",
+      "query_index": 1713,
+      "query_id": "B004O6LVY0",
+      "target_id": "B002YX0KZ6",
+      "source_captions": [
+        "The dress in black in color.",
+        "is strapless and black"
+      ],
+      "original_caption": "The dress in black in color. [SEP] is strapless and black",
+      "prompt": "The dress in black in color. [SEP] is strapless and black",
+      "expected_behavior": "Retrieve garments that satisfy the original FashionIQ modification.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q02_s02",
+      "probe_id": "dress_q02",
+      "scenario": "paraphrase",
+      "category": "dress",
+      "query_index": 1713,
+      "query_id": "B004O6LVY0",
+      "target_id": "B002YX0KZ6",
+      "source_captions": [
+        "The dress in black in color.",
+        "is strapless and black"
+      ],
+      "original_caption": "The dress in black in color. [SEP] is strapless and black",
+      "prompt": "Apply these requested changes: The dress in black in color; also, is strapless and black.",
+      "expected_behavior": "Remain close to the in-domain result under a meaning-preserving template change.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q02_s03",
+      "probe_id": "dress_q02",
+      "scenario": "identity",
+      "category": "dress",
+      "query_index": 1713,
+      "query_id": "B004O6LVY0",
+      "target_id": "B002YX0KZ6",
+      "source_captions": [
+        "The dress in black in color.",
+        "is strapless and black"
+      ],
+      "original_caption": "The dress in black in color. [SEP] is strapless and black",
+      "prompt": "Keep the garment exactly as it is; do not change its color, shape, material, or details.",
+      "expected_behavior": "Preserve the source garment; returning a visually close neighbour is preferable.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q02_s04",
+      "probe_id": "dress_q02",
+      "scenario": "contradiction",
+      "category": "dress",
+      "query_index": 1713,
+      "query_id": "B004O6LVY0",
+      "target_id": "B002YX0KZ6",
+      "source_captions": [
+        "The dress in black in color.",
+        "is strapless and black"
+      ],
+      "original_caption": "The dress in black in color. [SEP] is strapless and black",
+      "prompt": "Make it both sleeveless and long-sleeved, and make it both shorter and longer.",
+      "expected_behavior": "No gallery item can satisfy every mutually contradictory requirement.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q02_s05",
+      "probe_id": "dress_q02",
+      "scenario": "ood",
+      "category": "dress",
+      "query_index": 1713,
+      "query_id": "B004O6LVY0",
+      "target_id": "B002YX0KZ6",
+      "source_captions": [
+        "The dress in black in color.",
+        "is strapless and black"
+      ],
+      "original_caption": "The dress in black in color. [SEP] is strapless and black",
+      "prompt": "Make it play jazz music, increase its battery life, and make it smell like rain.",
+      "expected_behavior": "The request is outside the fashion-image domain; high-confidence visual compliance is unsupported.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q02_s06",
+      "probe_id": "dress_q02",
+      "scenario": "unsatisfiable",
+      "category": "dress",
+      "query_index": 1713,
+      "query_id": "B004O6LVY0",
+      "target_id": "B002YX0KZ6",
+      "source_captions": [
+        "The dress in black in color.",
+        "is strapless and black"
+      ],
+      "original_caption": "The dress in black in color. [SEP] is strapless and black",
+      "prompt": "Turn it into a transparent glass garment with animated flames and invisible fabric.",
+      "expected_behavior": "The fixed FashionIQ gallery is not expected to contain a full match.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q03_s01",
+      "probe_id": "dress_q03",
+      "scenario": "in_domain",
+      "category": "dress",
+      "query_index": 997,
+      "query_id": "B004PKZWNG",
+      "target_id": "B009LGLIIC",
+      "source_captions": [
+        "is blue in color",
+        "Has long sleeves and a blue pattern"
+      ],
+      "original_caption": "is blue in color [SEP] Has long sleeves and a blue pattern",
+      "prompt": "is blue in color [SEP] Has long sleeves and a blue pattern",
+      "expected_behavior": "Retrieve garments that satisfy the original FashionIQ modification.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q03_s02",
+      "probe_id": "dress_q03",
+      "scenario": "paraphrase",
+      "category": "dress",
+      "query_index": 997,
+      "query_id": "B004PKZWNG",
+      "target_id": "B009LGLIIC",
+      "source_captions": [
+        "is blue in color",
+        "Has long sleeves and a blue pattern"
+      ],
+      "original_caption": "is blue in color [SEP] Has long sleeves and a blue pattern",
+      "prompt": "Apply these requested changes: is blue in color; also, Has long sleeves and a blue pattern.",
+      "expected_behavior": "Remain close to the in-domain result under a meaning-preserving template change.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q03_s03",
+      "probe_id": "dress_q03",
+      "scenario": "identity",
+      "category": "dress",
+      "query_index": 997,
+      "query_id": "B004PKZWNG",
+      "target_id": "B009LGLIIC",
+      "source_captions": [
+        "is blue in color",
+        "Has long sleeves and a blue pattern"
+      ],
+      "original_caption": "is blue in color [SEP] Has long sleeves and a blue pattern",
+      "prompt": "Keep the garment exactly as it is; do not change its color, shape, material, or details.",
+      "expected_behavior": "Preserve the source garment; returning a visually close neighbour is preferable.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q03_s04",
+      "probe_id": "dress_q03",
+      "scenario": "contradiction",
+      "category": "dress",
+      "query_index": 997,
+      "query_id": "B004PKZWNG",
+      "target_id": "B009LGLIIC",
+      "source_captions": [
+        "is blue in color",
+        "Has long sleeves and a blue pattern"
+      ],
+      "original_caption": "is blue in color [SEP] Has long sleeves and a blue pattern",
+      "prompt": "Make it both sleeveless and long-sleeved, and make it both shorter and longer.",
+      "expected_behavior": "No gallery item can satisfy every mutually contradictory requirement.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q03_s05",
+      "probe_id": "dress_q03",
+      "scenario": "ood",
+      "category": "dress",
+      "query_index": 997,
+      "query_id": "B004PKZWNG",
+      "target_id": "B009LGLIIC",
+      "source_captions": [
+        "is blue in color",
+        "Has long sleeves and a blue pattern"
+      ],
+      "original_caption": "is blue in color [SEP] Has long sleeves and a blue pattern",
+      "prompt": "Make it play jazz music, increase its battery life, and make it smell like rain.",
+      "expected_behavior": "The request is outside the fashion-image domain; high-confidence visual compliance is unsupported.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q03_s06",
+      "probe_id": "dress_q03",
+      "scenario": "unsatisfiable",
+      "category": "dress",
+      "query_index": 997,
+      "query_id": "B004PKZWNG",
+      "target_id": "B009LGLIIC",
+      "source_captions": [
+        "is blue in color",
+        "Has long sleeves and a blue pattern"
+      ],
+      "original_caption": "is blue in color [SEP] Has long sleeves and a blue pattern",
+      "prompt": "Turn it into a transparent glass garment with animated flames and invisible fabric.",
+      "expected_behavior": "The fixed FashionIQ gallery is not expected to contain a full match.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q04_s01",
+      "probe_id": "dress_q04",
+      "scenario": "in_domain",
+      "category": "dress",
+      "query_index": 814,
+      "query_id": "B00FBRGJKM",
+      "target_id": "B00FTA0HUE",
+      "source_captions": [
+        "is tighter and fancier",
+        "tighter skirt and v neck"
+      ],
+      "original_caption": "is tighter and fancier [SEP] tighter skirt and v neck",
+      "prompt": "is tighter and fancier [SEP] tighter skirt and v neck",
+      "expected_behavior": "Retrieve garments that satisfy the original FashionIQ modification.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q04_s02",
+      "probe_id": "dress_q04",
+      "scenario": "paraphrase",
+      "category": "dress",
+      "query_index": 814,
+      "query_id": "B00FBRGJKM",
+      "target_id": "B00FTA0HUE",
+      "source_captions": [
+        "is tighter and fancier",
+        "tighter skirt and v neck"
+      ],
+      "original_caption": "is tighter and fancier [SEP] tighter skirt and v neck",
+      "prompt": "Apply these requested changes: is tighter and fancier; also, tighter skirt and v neck.",
+      "expected_behavior": "Remain close to the in-domain result under a meaning-preserving template change.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q04_s03",
+      "probe_id": "dress_q04",
+      "scenario": "identity",
+      "category": "dress",
+      "query_index": 814,
+      "query_id": "B00FBRGJKM",
+      "target_id": "B00FTA0HUE",
+      "source_captions": [
+        "is tighter and fancier",
+        "tighter skirt and v neck"
+      ],
+      "original_caption": "is tighter and fancier [SEP] tighter skirt and v neck",
+      "prompt": "Keep the garment exactly as it is; do not change its color, shape, material, or details.",
+      "expected_behavior": "Preserve the source garment; returning a visually close neighbour is preferable.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q04_s04",
+      "probe_id": "dress_q04",
+      "scenario": "contradiction",
+      "category": "dress",
+      "query_index": 814,
+      "query_id": "B00FBRGJKM",
+      "target_id": "B00FTA0HUE",
+      "source_captions": [
+        "is tighter and fancier",
+        "tighter skirt and v neck"
+      ],
+      "original_caption": "is tighter and fancier [SEP] tighter skirt and v neck",
+      "prompt": "Make it both sleeveless and long-sleeved, and make it both shorter and longer.",
+      "expected_behavior": "No gallery item can satisfy every mutually contradictory requirement.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q04_s05",
+      "probe_id": "dress_q04",
+      "scenario": "ood",
+      "category": "dress",
+      "query_index": 814,
+      "query_id": "B00FBRGJKM",
+      "target_id": "B00FTA0HUE",
+      "source_captions": [
+        "is tighter and fancier",
+        "tighter skirt and v neck"
+      ],
+      "original_caption": "is tighter and fancier [SEP] tighter skirt and v neck",
+      "prompt": "Make it play jazz music, increase its battery life, and make it smell like rain.",
+      "expected_behavior": "The request is outside the fashion-image domain; high-confidence visual compliance is unsupported.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q04_s06",
+      "probe_id": "dress_q04",
+      "scenario": "unsatisfiable",
+      "category": "dress",
+      "query_index": 814,
+      "query_id": "B00FBRGJKM",
+      "target_id": "B00FTA0HUE",
+      "source_captions": [
+        "is tighter and fancier",
+        "tighter skirt and v neck"
+      ],
+      "original_caption": "is tighter and fancier [SEP] tighter skirt and v neck",
+      "prompt": "Turn it into a transparent glass garment with animated flames and invisible fabric.",
+      "expected_behavior": "The fixed FashionIQ gallery is not expected to contain a full match.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q05_s01",
+      "probe_id": "dress_q05",
+      "scenario": "in_domain",
+      "category": "dress",
+      "query_index": 804,
+      "query_id": "B0029YQQYE",
+      "target_id": "B004OLGO24",
+      "source_captions": [
+        "more purple",
+        "is longer and more maroon"
+      ],
+      "original_caption": "more purple [SEP] is longer and more maroon",
+      "prompt": "more purple [SEP] is longer and more maroon",
+      "expected_behavior": "Retrieve garments that satisfy the original FashionIQ modification.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q05_s02",
+      "probe_id": "dress_q05",
+      "scenario": "paraphrase",
+      "category": "dress",
+      "query_index": 804,
+      "query_id": "B0029YQQYE",
+      "target_id": "B004OLGO24",
+      "source_captions": [
+        "more purple",
+        "is longer and more maroon"
+      ],
+      "original_caption": "more purple [SEP] is longer and more maroon",
+      "prompt": "Apply these requested changes: more purple; also, is longer and more maroon.",
+      "expected_behavior": "Remain close to the in-domain result under a meaning-preserving template change.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q05_s03",
+      "probe_id": "dress_q05",
+      "scenario": "identity",
+      "category": "dress",
+      "query_index": 804,
+      "query_id": "B0029YQQYE",
+      "target_id": "B004OLGO24",
+      "source_captions": [
+        "more purple",
+        "is longer and more maroon"
+      ],
+      "original_caption": "more purple [SEP] is longer and more maroon",
+      "prompt": "Keep the garment exactly as it is; do not change its color, shape, material, or details.",
+      "expected_behavior": "Preserve the source garment; returning a visually close neighbour is preferable.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q05_s04",
+      "probe_id": "dress_q05",
+      "scenario": "contradiction",
+      "category": "dress",
+      "query_index": 804,
+      "query_id": "B0029YQQYE",
+      "target_id": "B004OLGO24",
+      "source_captions": [
+        "more purple",
+        "is longer and more maroon"
+      ],
+      "original_caption": "more purple [SEP] is longer and more maroon",
+      "prompt": "Make it both sleeveless and long-sleeved, and make it both shorter and longer.",
+      "expected_behavior": "No gallery item can satisfy every mutually contradictory requirement.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q05_s05",
+      "probe_id": "dress_q05",
+      "scenario": "ood",
+      "category": "dress",
+      "query_index": 804,
+      "query_id": "B0029YQQYE",
+      "target_id": "B004OLGO24",
+      "source_captions": [
+        "more purple",
+        "is longer and more maroon"
+      ],
+      "original_caption": "more purple [SEP] is longer and more maroon",
+      "prompt": "Make it play jazz music, increase its battery life, and make it smell like rain.",
+      "expected_behavior": "The request is outside the fashion-image domain; high-confidence visual compliance is unsupported.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q05_s06",
+      "probe_id": "dress_q05",
+      "scenario": "unsatisfiable",
+      "category": "dress",
+      "query_index": 804,
+      "query_id": "B0029YQQYE",
+      "target_id": "B004OLGO24",
+      "source_captions": [
+        "more purple",
+        "is longer and more maroon"
+      ],
+      "original_caption": "more purple [SEP] is longer and more maroon",
+      "prompt": "Turn it into a transparent glass garment with animated flames and invisible fabric.",
+      "expected_behavior": "The fixed FashionIQ gallery is not expected to contain a full match.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q06_s01",
+      "probe_id": "dress_q06",
+      "scenario": "in_domain",
+      "category": "dress",
+      "query_index": 1390,
+      "query_id": "B00DFN4MSU",
+      "target_id": "B00806NEIQ",
+      "source_captions": [
+        "is shorter",
+        "is shorter and darker"
+      ],
+      "original_caption": "is shorter [SEP] is shorter and darker",
+      "prompt": "is shorter [SEP] is shorter and darker",
+      "expected_behavior": "Retrieve garments that satisfy the original FashionIQ modification.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q06_s02",
+      "probe_id": "dress_q06",
+      "scenario": "paraphrase",
+      "category": "dress",
+      "query_index": 1390,
+      "query_id": "B00DFN4MSU",
+      "target_id": "B00806NEIQ",
+      "source_captions": [
+        "is shorter",
+        "is shorter and darker"
+      ],
+      "original_caption": "is shorter [SEP] is shorter and darker",
+      "prompt": "Apply these requested changes: is shorter; also, is shorter and darker.",
+      "expected_behavior": "Remain close to the in-domain result under a meaning-preserving template change.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q06_s03",
+      "probe_id": "dress_q06",
+      "scenario": "identity",
+      "category": "dress",
+      "query_index": 1390,
+      "query_id": "B00DFN4MSU",
+      "target_id": "B00806NEIQ",
+      "source_captions": [
+        "is shorter",
+        "is shorter and darker"
+      ],
+      "original_caption": "is shorter [SEP] is shorter and darker",
+      "prompt": "Keep the garment exactly as it is; do not change its color, shape, material, or details.",
+      "expected_behavior": "Preserve the source garment; returning a visually close neighbour is preferable.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q06_s04",
+      "probe_id": "dress_q06",
+      "scenario": "contradiction",
+      "category": "dress",
+      "query_index": 1390,
+      "query_id": "B00DFN4MSU",
+      "target_id": "B00806NEIQ",
+      "source_captions": [
+        "is shorter",
+        "is shorter and darker"
+      ],
+      "original_caption": "is shorter [SEP] is shorter and darker",
+      "prompt": "Make it both sleeveless and long-sleeved, and make it both shorter and longer.",
+      "expected_behavior": "No gallery item can satisfy every mutually contradictory requirement.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q06_s05",
+      "probe_id": "dress_q06",
+      "scenario": "ood",
+      "category": "dress",
+      "query_index": 1390,
+      "query_id": "B00DFN4MSU",
+      "target_id": "B00806NEIQ",
+      "source_captions": [
+        "is shorter",
+        "is shorter and darker"
+      ],
+      "original_caption": "is shorter [SEP] is shorter and darker",
+      "prompt": "Make it play jazz music, increase its battery life, and make it smell like rain.",
+      "expected_behavior": "The request is outside the fashion-image domain; high-confidence visual compliance is unsupported.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q06_s06",
+      "probe_id": "dress_q06",
+      "scenario": "unsatisfiable",
+      "category": "dress",
+      "query_index": 1390,
+      "query_id": "B00DFN4MSU",
+      "target_id": "B00806NEIQ",
+      "source_captions": [
+        "is shorter",
+        "is shorter and darker"
+      ],
+      "original_caption": "is shorter [SEP] is shorter and darker",
+      "prompt": "Turn it into a transparent glass garment with animated flames and invisible fabric.",
+      "expected_behavior": "The fixed FashionIQ gallery is not expected to contain a full match.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q07_s01",
+      "probe_id": "dress_q07",
+      "scenario": "in_domain",
+      "category": "dress",
+      "query_index": 580,
+      "query_id": "B002WV0S6G",
+      "target_id": "B0036ME5BE",
+      "source_captions": [
+        "is shorter and more casual",
+        "is a lot shorter in tan coloring and the straps aren't similar."
+      ],
+      "original_caption": "is shorter and more casual [SEP] is a lot shorter in tan coloring and the straps aren't similar.",
+      "prompt": "is shorter and more casual [SEP] is a lot shorter in tan coloring and the straps aren't similar.",
+      "expected_behavior": "Retrieve garments that satisfy the original FashionIQ modification.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q07_s02",
+      "probe_id": "dress_q07",
+      "scenario": "paraphrase",
+      "category": "dress",
+      "query_index": 580,
+      "query_id": "B002WV0S6G",
+      "target_id": "B0036ME5BE",
+      "source_captions": [
+        "is shorter and more casual",
+        "is a lot shorter in tan coloring and the straps aren't similar."
+      ],
+      "original_caption": "is shorter and more casual [SEP] is a lot shorter in tan coloring and the straps aren't similar.",
+      "prompt": "Apply these requested changes: is shorter and more casual; also, is a lot shorter in tan coloring and the straps aren't similar.",
+      "expected_behavior": "Remain close to the in-domain result under a meaning-preserving template change.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q07_s03",
+      "probe_id": "dress_q07",
+      "scenario": "identity",
+      "category": "dress",
+      "query_index": 580,
+      "query_id": "B002WV0S6G",
+      "target_id": "B0036ME5BE",
+      "source_captions": [
+        "is shorter and more casual",
+        "is a lot shorter in tan coloring and the straps aren't similar."
+      ],
+      "original_caption": "is shorter and more casual [SEP] is a lot shorter in tan coloring and the straps aren't similar.",
+      "prompt": "Keep the garment exactly as it is; do not change its color, shape, material, or details.",
+      "expected_behavior": "Preserve the source garment; returning a visually close neighbour is preferable.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q07_s04",
+      "probe_id": "dress_q07",
+      "scenario": "contradiction",
+      "category": "dress",
+      "query_index": 580,
+      "query_id": "B002WV0S6G",
+      "target_id": "B0036ME5BE",
+      "source_captions": [
+        "is shorter and more casual",
+        "is a lot shorter in tan coloring and the straps aren't similar."
+      ],
+      "original_caption": "is shorter and more casual [SEP] is a lot shorter in tan coloring and the straps aren't similar.",
+      "prompt": "Make it both sleeveless and long-sleeved, and make it both shorter and longer.",
+      "expected_behavior": "No gallery item can satisfy every mutually contradictory requirement.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q07_s05",
+      "probe_id": "dress_q07",
+      "scenario": "ood",
+      "category": "dress",
+      "query_index": 580,
+      "query_id": "B002WV0S6G",
+      "target_id": "B0036ME5BE",
+      "source_captions": [
+        "is shorter and more casual",
+        "is a lot shorter in tan coloring and the straps aren't similar."
+      ],
+      "original_caption": "is shorter and more casual [SEP] is a lot shorter in tan coloring and the straps aren't similar.",
+      "prompt": "Make it play jazz music, increase its battery life, and make it smell like rain.",
+      "expected_behavior": "The request is outside the fashion-image domain; high-confidence visual compliance is unsupported.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q07_s06",
+      "probe_id": "dress_q07",
+      "scenario": "unsatisfiable",
+      "category": "dress",
+      "query_index": 580,
+      "query_id": "B002WV0S6G",
+      "target_id": "B0036ME5BE",
+      "source_captions": [
+        "is shorter and more casual",
+        "is a lot shorter in tan coloring and the straps aren't similar."
+      ],
+      "original_caption": "is shorter and more casual [SEP] is a lot shorter in tan coloring and the straps aren't similar.",
+      "prompt": "Turn it into a transparent glass garment with animated flames and invisible fabric.",
+      "expected_behavior": "The fixed FashionIQ gallery is not expected to contain a full match.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q08_s01",
+      "probe_id": "dress_q08",
+      "scenario": "in_domain",
+      "category": "dress",
+      "query_index": 802,
+      "query_id": "B0059817JQ",
+      "target_id": "B008UD2EAS",
+      "source_captions": [
+        "has three colors",
+        "has more colors"
+      ],
+      "original_caption": "has three colors [SEP] has more colors",
+      "prompt": "has three colors [SEP] has more colors",
+      "expected_behavior": "Retrieve garments that satisfy the original FashionIQ modification.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q08_s02",
+      "probe_id": "dress_q08",
+      "scenario": "paraphrase",
+      "category": "dress",
+      "query_index": 802,
+      "query_id": "B0059817JQ",
+      "target_id": "B008UD2EAS",
+      "source_captions": [
+        "has three colors",
+        "has more colors"
+      ],
+      "original_caption": "has three colors [SEP] has more colors",
+      "prompt": "Apply these requested changes: has three colors; also, has more colors.",
+      "expected_behavior": "Remain close to the in-domain result under a meaning-preserving template change.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q08_s03",
+      "probe_id": "dress_q08",
+      "scenario": "identity",
+      "category": "dress",
+      "query_index": 802,
+      "query_id": "B0059817JQ",
+      "target_id": "B008UD2EAS",
+      "source_captions": [
+        "has three colors",
+        "has more colors"
+      ],
+      "original_caption": "has three colors [SEP] has more colors",
+      "prompt": "Keep the garment exactly as it is; do not change its color, shape, material, or details.",
+      "expected_behavior": "Preserve the source garment; returning a visually close neighbour is preferable.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q08_s04",
+      "probe_id": "dress_q08",
+      "scenario": "contradiction",
+      "category": "dress",
+      "query_index": 802,
+      "query_id": "B0059817JQ",
+      "target_id": "B008UD2EAS",
+      "source_captions": [
+        "has three colors",
+        "has more colors"
+      ],
+      "original_caption": "has three colors [SEP] has more colors",
+      "prompt": "Make it both sleeveless and long-sleeved, and make it both shorter and longer.",
+      "expected_behavior": "No gallery item can satisfy every mutually contradictory requirement.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q08_s05",
+      "probe_id": "dress_q08",
+      "scenario": "ood",
+      "category": "dress",
+      "query_index": 802,
+      "query_id": "B0059817JQ",
+      "target_id": "B008UD2EAS",
+      "source_captions": [
+        "has three colors",
+        "has more colors"
+      ],
+      "original_caption": "has three colors [SEP] has more colors",
+      "prompt": "Make it play jazz music, increase its battery life, and make it smell like rain.",
+      "expected_behavior": "The request is outside the fashion-image domain; high-confidence visual compliance is unsupported.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q08_s06",
+      "probe_id": "dress_q08",
+      "scenario": "unsatisfiable",
+      "category": "dress",
+      "query_index": 802,
+      "query_id": "B0059817JQ",
+      "target_id": "B008UD2EAS",
+      "source_captions": [
+        "has three colors",
+        "has more colors"
+      ],
+      "original_caption": "has three colors [SEP] has more colors",
+      "prompt": "Turn it into a transparent glass garment with animated flames and invisible fabric.",
+      "expected_behavior": "The fixed FashionIQ gallery is not expected to contain a full match.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q09_s01",
+      "probe_id": "dress_q09",
+      "scenario": "in_domain",
+      "category": "dress",
+      "query_index": 823,
+      "query_id": "B00B1YKB26",
+      "target_id": "B00BUVAI5K",
+      "source_captions": [
+        " has a  u shaped neck with red heels",
+        " black and gray with no shoulder straps"
+      ],
+      "original_caption": " has a  u shaped neck with red heels [SEP]  black and gray with no shoulder straps",
+      "prompt": " has a  u shaped neck with red heels [SEP]  black and gray with no shoulder straps",
+      "expected_behavior": "Retrieve garments that satisfy the original FashionIQ modification.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q09_s02",
+      "probe_id": "dress_q09",
+      "scenario": "paraphrase",
+      "category": "dress",
+      "query_index": 823,
+      "query_id": "B00B1YKB26",
+      "target_id": "B00BUVAI5K",
+      "source_captions": [
+        " has a  u shaped neck with red heels",
+        " black and gray with no shoulder straps"
+      ],
+      "original_caption": " has a  u shaped neck with red heels [SEP]  black and gray with no shoulder straps",
+      "prompt": "Apply these requested changes: has a  u shaped neck with red heels; also, black and gray with no shoulder straps.",
+      "expected_behavior": "Remain close to the in-domain result under a meaning-preserving template change.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q09_s03",
+      "probe_id": "dress_q09",
+      "scenario": "identity",
+      "category": "dress",
+      "query_index": 823,
+      "query_id": "B00B1YKB26",
+      "target_id": "B00BUVAI5K",
+      "source_captions": [
+        " has a  u shaped neck with red heels",
+        " black and gray with no shoulder straps"
+      ],
+      "original_caption": " has a  u shaped neck with red heels [SEP]  black and gray with no shoulder straps",
+      "prompt": "Keep the garment exactly as it is; do not change its color, shape, material, or details.",
+      "expected_behavior": "Preserve the source garment; returning a visually close neighbour is preferable.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q09_s04",
+      "probe_id": "dress_q09",
+      "scenario": "contradiction",
+      "category": "dress",
+      "query_index": 823,
+      "query_id": "B00B1YKB26",
+      "target_id": "B00BUVAI5K",
+      "source_captions": [
+        " has a  u shaped neck with red heels",
+        " black and gray with no shoulder straps"
+      ],
+      "original_caption": " has a  u shaped neck with red heels [SEP]  black and gray with no shoulder straps",
+      "prompt": "Make it both sleeveless and long-sleeved, and make it both shorter and longer.",
+      "expected_behavior": "No gallery item can satisfy every mutually contradictory requirement.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q09_s05",
+      "probe_id": "dress_q09",
+      "scenario": "ood",
+      "category": "dress",
+      "query_index": 823,
+      "query_id": "B00B1YKB26",
+      "target_id": "B00BUVAI5K",
+      "source_captions": [
+        " has a  u shaped neck with red heels",
+        " black and gray with no shoulder straps"
+      ],
+      "original_caption": " has a  u shaped neck with red heels [SEP]  black and gray with no shoulder straps",
+      "prompt": "Make it play jazz music, increase its battery life, and make it smell like rain.",
+      "expected_behavior": "The request is outside the fashion-image domain; high-confidence visual compliance is unsupported.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q09_s06",
+      "probe_id": "dress_q09",
+      "scenario": "unsatisfiable",
+      "category": "dress",
+      "query_index": 823,
+      "query_id": "B00B1YKB26",
+      "target_id": "B00BUVAI5K",
+      "source_captions": [
+        " has a  u shaped neck with red heels",
+        " black and gray with no shoulder straps"
+      ],
+      "original_caption": " has a  u shaped neck with red heels [SEP]  black and gray with no shoulder straps",
+      "prompt": "Turn it into a transparent glass garment with animated flames and invisible fabric.",
+      "expected_behavior": "The fixed FashionIQ gallery is not expected to contain a full match.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q10_s01",
+      "probe_id": "dress_q10",
+      "scenario": "in_domain",
+      "category": "dress",
+      "query_index": 1946,
+      "query_id": "B00BM82UCK",
+      "target_id": "B0097B5ABC",
+      "source_captions": [
+        "is thigh high and blue",
+        "Is blue and denim"
+      ],
+      "original_caption": "is thigh high and blue [SEP] Is blue and denim",
+      "prompt": "is thigh high and blue [SEP] Is blue and denim",
+      "expected_behavior": "Retrieve garments that satisfy the original FashionIQ modification.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q10_s02",
+      "probe_id": "dress_q10",
+      "scenario": "paraphrase",
+      "category": "dress",
+      "query_index": 1946,
+      "query_id": "B00BM82UCK",
+      "target_id": "B0097B5ABC",
+      "source_captions": [
+        "is thigh high and blue",
+        "Is blue and denim"
+      ],
+      "original_caption": "is thigh high and blue [SEP] Is blue and denim",
+      "prompt": "Apply these requested changes: is thigh high and blue; also, Is blue and denim.",
+      "expected_behavior": "Remain close to the in-domain result under a meaning-preserving template change.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q10_s03",
+      "probe_id": "dress_q10",
+      "scenario": "identity",
+      "category": "dress",
+      "query_index": 1946,
+      "query_id": "B00BM82UCK",
+      "target_id": "B0097B5ABC",
+      "source_captions": [
+        "is thigh high and blue",
+        "Is blue and denim"
+      ],
+      "original_caption": "is thigh high and blue [SEP] Is blue and denim",
+      "prompt": "Keep the garment exactly as it is; do not change its color, shape, material, or details.",
+      "expected_behavior": "Preserve the source garment; returning a visually close neighbour is preferable.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q10_s04",
+      "probe_id": "dress_q10",
+      "scenario": "contradiction",
+      "category": "dress",
+      "query_index": 1946,
+      "query_id": "B00BM82UCK",
+      "target_id": "B0097B5ABC",
+      "source_captions": [
+        "is thigh high and blue",
+        "Is blue and denim"
+      ],
+      "original_caption": "is thigh high and blue [SEP] Is blue and denim",
+      "prompt": "Make it both sleeveless and long-sleeved, and make it both shorter and longer.",
+      "expected_behavior": "No gallery item can satisfy every mutually contradictory requirement.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q10_s05",
+      "probe_id": "dress_q10",
+      "scenario": "ood",
+      "category": "dress",
+      "query_index": 1946,
+      "query_id": "B00BM82UCK",
+      "target_id": "B0097B5ABC",
+      "source_captions": [
+        "is thigh high and blue",
+        "Is blue and denim"
+      ],
+      "original_caption": "is thigh high and blue [SEP] Is blue and denim",
+      "prompt": "Make it play jazz music, increase its battery life, and make it smell like rain.",
+      "expected_behavior": "The request is outside the fashion-image domain; high-confidence visual compliance is unsupported.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "dress_q10_s06",
+      "probe_id": "dress_q10",
+      "scenario": "unsatisfiable",
+      "category": "dress",
+      "query_index": 1946,
+      "query_id": "B00BM82UCK",
+      "target_id": "B0097B5ABC",
+      "source_captions": [
+        "is thigh high and blue",
+        "Is blue and denim"
+      ],
+      "original_caption": "is thigh high and blue [SEP] Is blue and denim",
+      "prompt": "Turn it into a transparent glass garment with animated flames and invisible fabric.",
+      "expected_behavior": "The fixed FashionIQ gallery is not expected to contain a full match.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q01_s01",
+      "probe_id": "shirt_q01",
+      "scenario": "in_domain",
+      "category": "shirt",
+      "query_index": 1746,
+      "query_id": "B003JY6WY2",
+      "target_id": "B004JHRX5A",
+      "source_captions": [
+        "is gray colored with green and yellow design",
+        "Is grey in color"
+      ],
+      "original_caption": "is gray colored with green and yellow design [SEP] Is grey in color",
+      "prompt": "is gray colored with green and yellow design [SEP] Is grey in color",
+      "expected_behavior": "Retrieve garments that satisfy the original FashionIQ modification.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q01_s02",
+      "probe_id": "shirt_q01",
+      "scenario": "paraphrase",
+      "category": "shirt",
+      "query_index": 1746,
+      "query_id": "B003JY6WY2",
+      "target_id": "B004JHRX5A",
+      "source_captions": [
+        "is gray colored with green and yellow design",
+        "Is grey in color"
+      ],
+      "original_caption": "is gray colored with green and yellow design [SEP] Is grey in color",
+      "prompt": "Apply these requested changes: is gray colored with green and yellow design; also, Is grey in color.",
+      "expected_behavior": "Remain close to the in-domain result under a meaning-preserving template change.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q01_s03",
+      "probe_id": "shirt_q01",
+      "scenario": "identity",
+      "category": "shirt",
+      "query_index": 1746,
+      "query_id": "B003JY6WY2",
+      "target_id": "B004JHRX5A",
+      "source_captions": [
+        "is gray colored with green and yellow design",
+        "Is grey in color"
+      ],
+      "original_caption": "is gray colored with green and yellow design [SEP] Is grey in color",
+      "prompt": "Keep the garment exactly as it is; do not change its color, shape, material, or details.",
+      "expected_behavior": "Preserve the source garment; returning a visually close neighbour is preferable.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q01_s04",
+      "probe_id": "shirt_q01",
+      "scenario": "contradiction",
+      "category": "shirt",
+      "query_index": 1746,
+      "query_id": "B003JY6WY2",
+      "target_id": "B004JHRX5A",
+      "source_captions": [
+        "is gray colored with green and yellow design",
+        "Is grey in color"
+      ],
+      "original_caption": "is gray colored with green and yellow design [SEP] Is grey in color",
+      "prompt": "Make it both sleeveless and long-sleeved, and make it both shorter and longer.",
+      "expected_behavior": "No gallery item can satisfy every mutually contradictory requirement.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q01_s05",
+      "probe_id": "shirt_q01",
+      "scenario": "ood",
+      "category": "shirt",
+      "query_index": 1746,
+      "query_id": "B003JY6WY2",
+      "target_id": "B004JHRX5A",
+      "source_captions": [
+        "is gray colored with green and yellow design",
+        "Is grey in color"
+      ],
+      "original_caption": "is gray colored with green and yellow design [SEP] Is grey in color",
+      "prompt": "Make it play jazz music, increase its battery life, and make it smell like rain.",
+      "expected_behavior": "The request is outside the fashion-image domain; high-confidence visual compliance is unsupported.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q01_s06",
+      "probe_id": "shirt_q01",
+      "scenario": "unsatisfiable",
+      "category": "shirt",
+      "query_index": 1746,
+      "query_id": "B003JY6WY2",
+      "target_id": "B004JHRX5A",
+      "source_captions": [
+        "is gray colored with green and yellow design",
+        "Is grey in color"
+      ],
+      "original_caption": "is gray colored with green and yellow design [SEP] Is grey in color",
+      "prompt": "Turn it into a transparent glass garment with animated flames and invisible fabric.",
+      "expected_behavior": "The fixed FashionIQ gallery is not expected to contain a full match.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q02_s01",
+      "probe_id": "shirt_q02",
+      "scenario": "in_domain",
+      "category": "shirt",
+      "query_index": 21,
+      "query_id": "B0051D0X2Q",
+      "target_id": "B003INE0Q6",
+      "source_captions": [
+        "is blue plaid with white button shirt",
+        "is lighter"
+      ],
+      "original_caption": "is blue plaid with white button shirt [SEP] is lighter",
+      "prompt": "is blue plaid with white button shirt [SEP] is lighter",
+      "expected_behavior": "Retrieve garments that satisfy the original FashionIQ modification.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q02_s02",
+      "probe_id": "shirt_q02",
+      "scenario": "paraphrase",
+      "category": "shirt",
+      "query_index": 21,
+      "query_id": "B0051D0X2Q",
+      "target_id": "B003INE0Q6",
+      "source_captions": [
+        "is blue plaid with white button shirt",
+        "is lighter"
+      ],
+      "original_caption": "is blue plaid with white button shirt [SEP] is lighter",
+      "prompt": "Apply these requested changes: is blue plaid with white button shirt; also, is lighter.",
+      "expected_behavior": "Remain close to the in-domain result under a meaning-preserving template change.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q02_s03",
+      "probe_id": "shirt_q02",
+      "scenario": "identity",
+      "category": "shirt",
+      "query_index": 21,
+      "query_id": "B0051D0X2Q",
+      "target_id": "B003INE0Q6",
+      "source_captions": [
+        "is blue plaid with white button shirt",
+        "is lighter"
+      ],
+      "original_caption": "is blue plaid with white button shirt [SEP] is lighter",
+      "prompt": "Keep the garment exactly as it is; do not change its color, shape, material, or details.",
+      "expected_behavior": "Preserve the source garment; returning a visually close neighbour is preferable.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q02_s04",
+      "probe_id": "shirt_q02",
+      "scenario": "contradiction",
+      "category": "shirt",
+      "query_index": 21,
+      "query_id": "B0051D0X2Q",
+      "target_id": "B003INE0Q6",
+      "source_captions": [
+        "is blue plaid with white button shirt",
+        "is lighter"
+      ],
+      "original_caption": "is blue plaid with white button shirt [SEP] is lighter",
+      "prompt": "Make it both sleeveless and long-sleeved, and make it both shorter and longer.",
+      "expected_behavior": "No gallery item can satisfy every mutually contradictory requirement.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q02_s05",
+      "probe_id": "shirt_q02",
+      "scenario": "ood",
+      "category": "shirt",
+      "query_index": 21,
+      "query_id": "B0051D0X2Q",
+      "target_id": "B003INE0Q6",
+      "source_captions": [
+        "is blue plaid with white button shirt",
+        "is lighter"
+      ],
+      "original_caption": "is blue plaid with white button shirt [SEP] is lighter",
+      "prompt": "Make it play jazz music, increase its battery life, and make it smell like rain.",
+      "expected_behavior": "The request is outside the fashion-image domain; high-confidence visual compliance is unsupported.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q02_s06",
+      "probe_id": "shirt_q02",
+      "scenario": "unsatisfiable",
+      "category": "shirt",
+      "query_index": 21,
+      "query_id": "B0051D0X2Q",
+      "target_id": "B003INE0Q6",
+      "source_captions": [
+        "is blue plaid with white button shirt",
+        "is lighter"
+      ],
+      "original_caption": "is blue plaid with white button shirt [SEP] is lighter",
+      "prompt": "Turn it into a transparent glass garment with animated flames and invisible fabric.",
+      "expected_behavior": "The fixed FashionIQ gallery is not expected to contain a full match.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q03_s01",
+      "probe_id": "shirt_q03",
+      "scenario": "in_domain",
+      "category": "shirt",
+      "query_index": 392,
+      "query_id": "B00B31W2TC",
+      "target_id": "B00B2JD2CQ",
+      "source_captions": [
+        "is lighter with shorter sleeves",
+        "is less striped"
+      ],
+      "original_caption": "is lighter with shorter sleeves [SEP] is less striped",
+      "prompt": "is lighter with shorter sleeves [SEP] is less striped",
+      "expected_behavior": "Retrieve garments that satisfy the original FashionIQ modification.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q03_s02",
+      "probe_id": "shirt_q03",
+      "scenario": "paraphrase",
+      "category": "shirt",
+      "query_index": 392,
+      "query_id": "B00B31W2TC",
+      "target_id": "B00B2JD2CQ",
+      "source_captions": [
+        "is lighter with shorter sleeves",
+        "is less striped"
+      ],
+      "original_caption": "is lighter with shorter sleeves [SEP] is less striped",
+      "prompt": "Apply these requested changes: is lighter with shorter sleeves; also, is less striped.",
+      "expected_behavior": "Remain close to the in-domain result under a meaning-preserving template change.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q03_s03",
+      "probe_id": "shirt_q03",
+      "scenario": "identity",
+      "category": "shirt",
+      "query_index": 392,
+      "query_id": "B00B31W2TC",
+      "target_id": "B00B2JD2CQ",
+      "source_captions": [
+        "is lighter with shorter sleeves",
+        "is less striped"
+      ],
+      "original_caption": "is lighter with shorter sleeves [SEP] is less striped",
+      "prompt": "Keep the garment exactly as it is; do not change its color, shape, material, or details.",
+      "expected_behavior": "Preserve the source garment; returning a visually close neighbour is preferable.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q03_s04",
+      "probe_id": "shirt_q03",
+      "scenario": "contradiction",
+      "category": "shirt",
+      "query_index": 392,
+      "query_id": "B00B31W2TC",
+      "target_id": "B00B2JD2CQ",
+      "source_captions": [
+        "is lighter with shorter sleeves",
+        "is less striped"
+      ],
+      "original_caption": "is lighter with shorter sleeves [SEP] is less striped",
+      "prompt": "Make it both sleeveless and long-sleeved, and make it both shorter and longer.",
+      "expected_behavior": "No gallery item can satisfy every mutually contradictory requirement.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q03_s05",
+      "probe_id": "shirt_q03",
+      "scenario": "ood",
+      "category": "shirt",
+      "query_index": 392,
+      "query_id": "B00B31W2TC",
+      "target_id": "B00B2JD2CQ",
+      "source_captions": [
+        "is lighter with shorter sleeves",
+        "is less striped"
+      ],
+      "original_caption": "is lighter with shorter sleeves [SEP] is less striped",
+      "prompt": "Make it play jazz music, increase its battery life, and make it smell like rain.",
+      "expected_behavior": "The request is outside the fashion-image domain; high-confidence visual compliance is unsupported.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q03_s06",
+      "probe_id": "shirt_q03",
+      "scenario": "unsatisfiable",
+      "category": "shirt",
+      "query_index": 392,
+      "query_id": "B00B31W2TC",
+      "target_id": "B00B2JD2CQ",
+      "source_captions": [
+        "is lighter with shorter sleeves",
+        "is less striped"
+      ],
+      "original_caption": "is lighter with shorter sleeves [SEP] is less striped",
+      "prompt": "Turn it into a transparent glass garment with animated flames and invisible fabric.",
+      "expected_behavior": "The fixed FashionIQ gallery is not expected to contain a full match.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q04_s01",
+      "probe_id": "shirt_q04",
+      "scenario": "in_domain",
+      "category": "shirt",
+      "query_index": 995,
+      "query_id": "B002UQJENQ",
+      "target_id": "B004KPD8FA",
+      "source_captions": [
+        "is a black t shirt",
+        "has text in red"
+      ],
+      "original_caption": "is a black t shirt [SEP] has text in red",
+      "prompt": "is a black t shirt [SEP] has text in red",
+      "expected_behavior": "Retrieve garments that satisfy the original FashionIQ modification.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q04_s02",
+      "probe_id": "shirt_q04",
+      "scenario": "paraphrase",
+      "category": "shirt",
+      "query_index": 995,
+      "query_id": "B002UQJENQ",
+      "target_id": "B004KPD8FA",
+      "source_captions": [
+        "is a black t shirt",
+        "has text in red"
+      ],
+      "original_caption": "is a black t shirt [SEP] has text in red",
+      "prompt": "Apply these requested changes: is a black t shirt; also, has text in red.",
+      "expected_behavior": "Remain close to the in-domain result under a meaning-preserving template change.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q04_s03",
+      "probe_id": "shirt_q04",
+      "scenario": "identity",
+      "category": "shirt",
+      "query_index": 995,
+      "query_id": "B002UQJENQ",
+      "target_id": "B004KPD8FA",
+      "source_captions": [
+        "is a black t shirt",
+        "has text in red"
+      ],
+      "original_caption": "is a black t shirt [SEP] has text in red",
+      "prompt": "Keep the garment exactly as it is; do not change its color, shape, material, or details.",
+      "expected_behavior": "Preserve the source garment; returning a visually close neighbour is preferable.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q04_s04",
+      "probe_id": "shirt_q04",
+      "scenario": "contradiction",
+      "category": "shirt",
+      "query_index": 995,
+      "query_id": "B002UQJENQ",
+      "target_id": "B004KPD8FA",
+      "source_captions": [
+        "is a black t shirt",
+        "has text in red"
+      ],
+      "original_caption": "is a black t shirt [SEP] has text in red",
+      "prompt": "Make it both sleeveless and long-sleeved, and make it both shorter and longer.",
+      "expected_behavior": "No gallery item can satisfy every mutually contradictory requirement.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q04_s05",
+      "probe_id": "shirt_q04",
+      "scenario": "ood",
+      "category": "shirt",
+      "query_index": 995,
+      "query_id": "B002UQJENQ",
+      "target_id": "B004KPD8FA",
+      "source_captions": [
+        "is a black t shirt",
+        "has text in red"
+      ],
+      "original_caption": "is a black t shirt [SEP] has text in red",
+      "prompt": "Make it play jazz music, increase its battery life, and make it smell like rain.",
+      "expected_behavior": "The request is outside the fashion-image domain; high-confidence visual compliance is unsupported.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q04_s06",
+      "probe_id": "shirt_q04",
+      "scenario": "unsatisfiable",
+      "category": "shirt",
+      "query_index": 995,
+      "query_id": "B002UQJENQ",
+      "target_id": "B004KPD8FA",
+      "source_captions": [
+        "is a black t shirt",
+        "has text in red"
+      ],
+      "original_caption": "is a black t shirt [SEP] has text in red",
+      "prompt": "Turn it into a transparent glass garment with animated flames and invisible fabric.",
+      "expected_behavior": "The fixed FashionIQ gallery is not expected to contain a full match.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q05_s01",
+      "probe_id": "shirt_q05",
+      "scenario": "in_domain",
+      "category": "shirt",
+      "query_index": 975,
+      "query_id": "B005CQAIYK",
+      "target_id": "B001B14HE2",
+      "source_captions": [
+        "is a lighter color and has shorter sleeves",
+        "Is white with shorter sleeves."
+      ],
+      "original_caption": "is a lighter color and has shorter sleeves [SEP] Is white with shorter sleeves.",
+      "prompt": "is a lighter color and has shorter sleeves [SEP] Is white with shorter sleeves.",
+      "expected_behavior": "Retrieve garments that satisfy the original FashionIQ modification.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q05_s02",
+      "probe_id": "shirt_q05",
+      "scenario": "paraphrase",
+      "category": "shirt",
+      "query_index": 975,
+      "query_id": "B005CQAIYK",
+      "target_id": "B001B14HE2",
+      "source_captions": [
+        "is a lighter color and has shorter sleeves",
+        "Is white with shorter sleeves."
+      ],
+      "original_caption": "is a lighter color and has shorter sleeves [SEP] Is white with shorter sleeves.",
+      "prompt": "Apply these requested changes: is a lighter color and has shorter sleeves; also, Is white with shorter sleeves.",
+      "expected_behavior": "Remain close to the in-domain result under a meaning-preserving template change.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q05_s03",
+      "probe_id": "shirt_q05",
+      "scenario": "identity",
+      "category": "shirt",
+      "query_index": 975,
+      "query_id": "B005CQAIYK",
+      "target_id": "B001B14HE2",
+      "source_captions": [
+        "is a lighter color and has shorter sleeves",
+        "Is white with shorter sleeves."
+      ],
+      "original_caption": "is a lighter color and has shorter sleeves [SEP] Is white with shorter sleeves.",
+      "prompt": "Keep the garment exactly as it is; do not change its color, shape, material, or details.",
+      "expected_behavior": "Preserve the source garment; returning a visually close neighbour is preferable.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q05_s04",
+      "probe_id": "shirt_q05",
+      "scenario": "contradiction",
+      "category": "shirt",
+      "query_index": 975,
+      "query_id": "B005CQAIYK",
+      "target_id": "B001B14HE2",
+      "source_captions": [
+        "is a lighter color and has shorter sleeves",
+        "Is white with shorter sleeves."
+      ],
+      "original_caption": "is a lighter color and has shorter sleeves [SEP] Is white with shorter sleeves.",
+      "prompt": "Make it both sleeveless and long-sleeved, and make it both shorter and longer.",
+      "expected_behavior": "No gallery item can satisfy every mutually contradictory requirement.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q05_s05",
+      "probe_id": "shirt_q05",
+      "scenario": "ood",
+      "category": "shirt",
+      "query_index": 975,
+      "query_id": "B005CQAIYK",
+      "target_id": "B001B14HE2",
+      "source_captions": [
+        "is a lighter color and has shorter sleeves",
+        "Is white with shorter sleeves."
+      ],
+      "original_caption": "is a lighter color and has shorter sleeves [SEP] Is white with shorter sleeves.",
+      "prompt": "Make it play jazz music, increase its battery life, and make it smell like rain.",
+      "expected_behavior": "The request is outside the fashion-image domain; high-confidence visual compliance is unsupported.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q05_s06",
+      "probe_id": "shirt_q05",
+      "scenario": "unsatisfiable",
+      "category": "shirt",
+      "query_index": 975,
+      "query_id": "B005CQAIYK",
+      "target_id": "B001B14HE2",
+      "source_captions": [
+        "is a lighter color and has shorter sleeves",
+        "Is white with shorter sleeves."
+      ],
+      "original_caption": "is a lighter color and has shorter sleeves [SEP] Is white with shorter sleeves.",
+      "prompt": "Turn it into a transparent glass garment with animated flames and invisible fabric.",
+      "expected_behavior": "The fixed FashionIQ gallery is not expected to contain a full match.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q06_s01",
+      "probe_id": "shirt_q06",
+      "scenario": "in_domain",
+      "category": "shirt",
+      "query_index": 1175,
+      "query_id": "B00B1FCGFU",
+      "target_id": "B000F5LTXW",
+      "source_captions": [
+        "is blue with image of dolphins",
+        "is closer to blue"
+      ],
+      "original_caption": "is blue with image of dolphins [SEP] is closer to blue",
+      "prompt": "is blue with image of dolphins [SEP] is closer to blue",
+      "expected_behavior": "Retrieve garments that satisfy the original FashionIQ modification.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q06_s02",
+      "probe_id": "shirt_q06",
+      "scenario": "paraphrase",
+      "category": "shirt",
+      "query_index": 1175,
+      "query_id": "B00B1FCGFU",
+      "target_id": "B000F5LTXW",
+      "source_captions": [
+        "is blue with image of dolphins",
+        "is closer to blue"
+      ],
+      "original_caption": "is blue with image of dolphins [SEP] is closer to blue",
+      "prompt": "Apply these requested changes: is blue with image of dolphins; also, is closer to blue.",
+      "expected_behavior": "Remain close to the in-domain result under a meaning-preserving template change.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q06_s03",
+      "probe_id": "shirt_q06",
+      "scenario": "identity",
+      "category": "shirt",
+      "query_index": 1175,
+      "query_id": "B00B1FCGFU",
+      "target_id": "B000F5LTXW",
+      "source_captions": [
+        "is blue with image of dolphins",
+        "is closer to blue"
+      ],
+      "original_caption": "is blue with image of dolphins [SEP] is closer to blue",
+      "prompt": "Keep the garment exactly as it is; do not change its color, shape, material, or details.",
+      "expected_behavior": "Preserve the source garment; returning a visually close neighbour is preferable.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q06_s04",
+      "probe_id": "shirt_q06",
+      "scenario": "contradiction",
+      "category": "shirt",
+      "query_index": 1175,
+      "query_id": "B00B1FCGFU",
+      "target_id": "B000F5LTXW",
+      "source_captions": [
+        "is blue with image of dolphins",
+        "is closer to blue"
+      ],
+      "original_caption": "is blue with image of dolphins [SEP] is closer to blue",
+      "prompt": "Make it both sleeveless and long-sleeved, and make it both shorter and longer.",
+      "expected_behavior": "No gallery item can satisfy every mutually contradictory requirement.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q06_s05",
+      "probe_id": "shirt_q06",
+      "scenario": "ood",
+      "category": "shirt",
+      "query_index": 1175,
+      "query_id": "B00B1FCGFU",
+      "target_id": "B000F5LTXW",
+      "source_captions": [
+        "is blue with image of dolphins",
+        "is closer to blue"
+      ],
+      "original_caption": "is blue with image of dolphins [SEP] is closer to blue",
+      "prompt": "Make it play jazz music, increase its battery life, and make it smell like rain.",
+      "expected_behavior": "The request is outside the fashion-image domain; high-confidence visual compliance is unsupported.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q06_s06",
+      "probe_id": "shirt_q06",
+      "scenario": "unsatisfiable",
+      "category": "shirt",
+      "query_index": 1175,
+      "query_id": "B00B1FCGFU",
+      "target_id": "B000F5LTXW",
+      "source_captions": [
+        "is blue with image of dolphins",
+        "is closer to blue"
+      ],
+      "original_caption": "is blue with image of dolphins [SEP] is closer to blue",
+      "prompt": "Turn it into a transparent glass garment with animated flames and invisible fabric.",
+      "expected_behavior": "The fixed FashionIQ gallery is not expected to contain a full match.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q07_s01",
+      "probe_id": "shirt_q07",
+      "scenario": "in_domain",
+      "category": "shirt",
+      "query_index": 1074,
+      "query_id": "B0095VZ8JI",
+      "target_id": "B008MHFJIQ",
+      "source_captions": [
+        "Is less animal-like and more wordy",
+        "has a white chest logo"
+      ],
+      "original_caption": "Is less animal-like and more wordy [SEP] has a white chest logo",
+      "prompt": "Is less animal-like and more wordy [SEP] has a white chest logo",
+      "expected_behavior": "Retrieve garments that satisfy the original FashionIQ modification.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q07_s02",
+      "probe_id": "shirt_q07",
+      "scenario": "paraphrase",
+      "category": "shirt",
+      "query_index": 1074,
+      "query_id": "B0095VZ8JI",
+      "target_id": "B008MHFJIQ",
+      "source_captions": [
+        "Is less animal-like and more wordy",
+        "has a white chest logo"
+      ],
+      "original_caption": "Is less animal-like and more wordy [SEP] has a white chest logo",
+      "prompt": "Apply these requested changes: Is less animal-like and more wordy; also, has a white chest logo.",
+      "expected_behavior": "Remain close to the in-domain result under a meaning-preserving template change.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q07_s03",
+      "probe_id": "shirt_q07",
+      "scenario": "identity",
+      "category": "shirt",
+      "query_index": 1074,
+      "query_id": "B0095VZ8JI",
+      "target_id": "B008MHFJIQ",
+      "source_captions": [
+        "Is less animal-like and more wordy",
+        "has a white chest logo"
+      ],
+      "original_caption": "Is less animal-like and more wordy [SEP] has a white chest logo",
+      "prompt": "Keep the garment exactly as it is; do not change its color, shape, material, or details.",
+      "expected_behavior": "Preserve the source garment; returning a visually close neighbour is preferable.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q07_s04",
+      "probe_id": "shirt_q07",
+      "scenario": "contradiction",
+      "category": "shirt",
+      "query_index": 1074,
+      "query_id": "B0095VZ8JI",
+      "target_id": "B008MHFJIQ",
+      "source_captions": [
+        "Is less animal-like and more wordy",
+        "has a white chest logo"
+      ],
+      "original_caption": "Is less animal-like and more wordy [SEP] has a white chest logo",
+      "prompt": "Make it both sleeveless and long-sleeved, and make it both shorter and longer.",
+      "expected_behavior": "No gallery item can satisfy every mutually contradictory requirement.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q07_s05",
+      "probe_id": "shirt_q07",
+      "scenario": "ood",
+      "category": "shirt",
+      "query_index": 1074,
+      "query_id": "B0095VZ8JI",
+      "target_id": "B008MHFJIQ",
+      "source_captions": [
+        "Is less animal-like and more wordy",
+        "has a white chest logo"
+      ],
+      "original_caption": "Is less animal-like and more wordy [SEP] has a white chest logo",
+      "prompt": "Make it play jazz music, increase its battery life, and make it smell like rain.",
+      "expected_behavior": "The request is outside the fashion-image domain; high-confidence visual compliance is unsupported.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q07_s06",
+      "probe_id": "shirt_q07",
+      "scenario": "unsatisfiable",
+      "category": "shirt",
+      "query_index": 1074,
+      "query_id": "B0095VZ8JI",
+      "target_id": "B008MHFJIQ",
+      "source_captions": [
+        "Is less animal-like and more wordy",
+        "has a white chest logo"
+      ],
+      "original_caption": "Is less animal-like and more wordy [SEP] has a white chest logo",
+      "prompt": "Turn it into a transparent glass garment with animated flames and invisible fabric.",
+      "expected_behavior": "The fixed FashionIQ gallery is not expected to contain a full match.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q08_s01",
+      "probe_id": "shirt_q08",
+      "scenario": "in_domain",
+      "category": "shirt",
+      "query_index": 1092,
+      "query_id": "B00AOJHO56",
+      "target_id": "245600258X",
+      "source_captions": [
+        "Has a Hawaii summery feel with more colors",
+        "has more colors and more graphics"
+      ],
+      "original_caption": "Has a Hawaii summery feel with more colors [SEP] has more colors and more graphics",
+      "prompt": "Has a Hawaii summery feel with more colors [SEP] has more colors and more graphics",
+      "expected_behavior": "Retrieve garments that satisfy the original FashionIQ modification.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q08_s02",
+      "probe_id": "shirt_q08",
+      "scenario": "paraphrase",
+      "category": "shirt",
+      "query_index": 1092,
+      "query_id": "B00AOJHO56",
+      "target_id": "245600258X",
+      "source_captions": [
+        "Has a Hawaii summery feel with more colors",
+        "has more colors and more graphics"
+      ],
+      "original_caption": "Has a Hawaii summery feel with more colors [SEP] has more colors and more graphics",
+      "prompt": "Apply these requested changes: Has a Hawaii summery feel with more colors; also, has more colors and more graphics.",
+      "expected_behavior": "Remain close to the in-domain result under a meaning-preserving template change.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q08_s03",
+      "probe_id": "shirt_q08",
+      "scenario": "identity",
+      "category": "shirt",
+      "query_index": 1092,
+      "query_id": "B00AOJHO56",
+      "target_id": "245600258X",
+      "source_captions": [
+        "Has a Hawaii summery feel with more colors",
+        "has more colors and more graphics"
+      ],
+      "original_caption": "Has a Hawaii summery feel with more colors [SEP] has more colors and more graphics",
+      "prompt": "Keep the garment exactly as it is; do not change its color, shape, material, or details.",
+      "expected_behavior": "Preserve the source garment; returning a visually close neighbour is preferable.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q08_s04",
+      "probe_id": "shirt_q08",
+      "scenario": "contradiction",
+      "category": "shirt",
+      "query_index": 1092,
+      "query_id": "B00AOJHO56",
+      "target_id": "245600258X",
+      "source_captions": [
+        "Has a Hawaii summery feel with more colors",
+        "has more colors and more graphics"
+      ],
+      "original_caption": "Has a Hawaii summery feel with more colors [SEP] has more colors and more graphics",
+      "prompt": "Make it both sleeveless and long-sleeved, and make it both shorter and longer.",
+      "expected_behavior": "No gallery item can satisfy every mutually contradictory requirement.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q08_s05",
+      "probe_id": "shirt_q08",
+      "scenario": "ood",
+      "category": "shirt",
+      "query_index": 1092,
+      "query_id": "B00AOJHO56",
+      "target_id": "245600258X",
+      "source_captions": [
+        "Has a Hawaii summery feel with more colors",
+        "has more colors and more graphics"
+      ],
+      "original_caption": "Has a Hawaii summery feel with more colors [SEP] has more colors and more graphics",
+      "prompt": "Make it play jazz music, increase its battery life, and make it smell like rain.",
+      "expected_behavior": "The request is outside the fashion-image domain; high-confidence visual compliance is unsupported.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q08_s06",
+      "probe_id": "shirt_q08",
+      "scenario": "unsatisfiable",
+      "category": "shirt",
+      "query_index": 1092,
+      "query_id": "B00AOJHO56",
+      "target_id": "245600258X",
+      "source_captions": [
+        "Has a Hawaii summery feel with more colors",
+        "has more colors and more graphics"
+      ],
+      "original_caption": "Has a Hawaii summery feel with more colors [SEP] has more colors and more graphics",
+      "prompt": "Turn it into a transparent glass garment with animated flames and invisible fabric.",
+      "expected_behavior": "The fixed FashionIQ gallery is not expected to contain a full match.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q09_s01",
+      "probe_id": "shirt_q09",
+      "scenario": "in_domain",
+      "category": "shirt",
+      "query_index": 842,
+      "query_id": "B001CWN1A6",
+      "target_id": "B001L0ZVIE",
+      "source_captions": [
+        "is gray with long sleeves",
+        "is darker"
+      ],
+      "original_caption": "is gray with long sleeves [SEP] is darker",
+      "prompt": "is gray with long sleeves [SEP] is darker",
+      "expected_behavior": "Retrieve garments that satisfy the original FashionIQ modification.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q09_s02",
+      "probe_id": "shirt_q09",
+      "scenario": "paraphrase",
+      "category": "shirt",
+      "query_index": 842,
+      "query_id": "B001CWN1A6",
+      "target_id": "B001L0ZVIE",
+      "source_captions": [
+        "is gray with long sleeves",
+        "is darker"
+      ],
+      "original_caption": "is gray with long sleeves [SEP] is darker",
+      "prompt": "Apply these requested changes: is gray with long sleeves; also, is darker.",
+      "expected_behavior": "Remain close to the in-domain result under a meaning-preserving template change.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q09_s03",
+      "probe_id": "shirt_q09",
+      "scenario": "identity",
+      "category": "shirt",
+      "query_index": 842,
+      "query_id": "B001CWN1A6",
+      "target_id": "B001L0ZVIE",
+      "source_captions": [
+        "is gray with long sleeves",
+        "is darker"
+      ],
+      "original_caption": "is gray with long sleeves [SEP] is darker",
+      "prompt": "Keep the garment exactly as it is; do not change its color, shape, material, or details.",
+      "expected_behavior": "Preserve the source garment; returning a visually close neighbour is preferable.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q09_s04",
+      "probe_id": "shirt_q09",
+      "scenario": "contradiction",
+      "category": "shirt",
+      "query_index": 842,
+      "query_id": "B001CWN1A6",
+      "target_id": "B001L0ZVIE",
+      "source_captions": [
+        "is gray with long sleeves",
+        "is darker"
+      ],
+      "original_caption": "is gray with long sleeves [SEP] is darker",
+      "prompt": "Make it both sleeveless and long-sleeved, and make it both shorter and longer.",
+      "expected_behavior": "No gallery item can satisfy every mutually contradictory requirement.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q09_s05",
+      "probe_id": "shirt_q09",
+      "scenario": "ood",
+      "category": "shirt",
+      "query_index": 842,
+      "query_id": "B001CWN1A6",
+      "target_id": "B001L0ZVIE",
+      "source_captions": [
+        "is gray with long sleeves",
+        "is darker"
+      ],
+      "original_caption": "is gray with long sleeves [SEP] is darker",
+      "prompt": "Make it play jazz music, increase its battery life, and make it smell like rain.",
+      "expected_behavior": "The request is outside the fashion-image domain; high-confidence visual compliance is unsupported.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q09_s06",
+      "probe_id": "shirt_q09",
+      "scenario": "unsatisfiable",
+      "category": "shirt",
+      "query_index": 842,
+      "query_id": "B001CWN1A6",
+      "target_id": "B001L0ZVIE",
+      "source_captions": [
+        "is gray with long sleeves",
+        "is darker"
+      ],
+      "original_caption": "is gray with long sleeves [SEP] is darker",
+      "prompt": "Turn it into a transparent glass garment with animated flames and invisible fabric.",
+      "expected_behavior": "The fixed FashionIQ gallery is not expected to contain a full match.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q10_s01",
+      "probe_id": "shirt_q10",
+      "scenario": "in_domain",
+      "category": "shirt",
+      "query_index": 585,
+      "query_id": "B00AZIAZK2",
+      "target_id": "B001LY2VLK",
+      "source_captions": [
+        "Is more whimsical and black",
+        "is a dark t-shirt with a graphic"
+      ],
+      "original_caption": "Is more whimsical and black [SEP] is a dark t-shirt with a graphic",
+      "prompt": "Is more whimsical and black [SEP] is a dark t-shirt with a graphic",
+      "expected_behavior": "Retrieve garments that satisfy the original FashionIQ modification.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q10_s02",
+      "probe_id": "shirt_q10",
+      "scenario": "paraphrase",
+      "category": "shirt",
+      "query_index": 585,
+      "query_id": "B00AZIAZK2",
+      "target_id": "B001LY2VLK",
+      "source_captions": [
+        "Is more whimsical and black",
+        "is a dark t-shirt with a graphic"
+      ],
+      "original_caption": "Is more whimsical and black [SEP] is a dark t-shirt with a graphic",
+      "prompt": "Apply these requested changes: Is more whimsical and black; also, is a dark t-shirt with a graphic.",
+      "expected_behavior": "Remain close to the in-domain result under a meaning-preserving template change.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q10_s03",
+      "probe_id": "shirt_q10",
+      "scenario": "identity",
+      "category": "shirt",
+      "query_index": 585,
+      "query_id": "B00AZIAZK2",
+      "target_id": "B001LY2VLK",
+      "source_captions": [
+        "Is more whimsical and black",
+        "is a dark t-shirt with a graphic"
+      ],
+      "original_caption": "Is more whimsical and black [SEP] is a dark t-shirt with a graphic",
+      "prompt": "Keep the garment exactly as it is; do not change its color, shape, material, or details.",
+      "expected_behavior": "Preserve the source garment; returning a visually close neighbour is preferable.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q10_s04",
+      "probe_id": "shirt_q10",
+      "scenario": "contradiction",
+      "category": "shirt",
+      "query_index": 585,
+      "query_id": "B00AZIAZK2",
+      "target_id": "B001LY2VLK",
+      "source_captions": [
+        "Is more whimsical and black",
+        "is a dark t-shirt with a graphic"
+      ],
+      "original_caption": "Is more whimsical and black [SEP] is a dark t-shirt with a graphic",
+      "prompt": "Make it both sleeveless and long-sleeved, and make it both shorter and longer.",
+      "expected_behavior": "No gallery item can satisfy every mutually contradictory requirement.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q10_s05",
+      "probe_id": "shirt_q10",
+      "scenario": "ood",
+      "category": "shirt",
+      "query_index": 585,
+      "query_id": "B00AZIAZK2",
+      "target_id": "B001LY2VLK",
+      "source_captions": [
+        "Is more whimsical and black",
+        "is a dark t-shirt with a graphic"
+      ],
+      "original_caption": "Is more whimsical and black [SEP] is a dark t-shirt with a graphic",
+      "prompt": "Make it play jazz music, increase its battery life, and make it smell like rain.",
+      "expected_behavior": "The request is outside the fashion-image domain; high-confidence visual compliance is unsupported.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "shirt_q10_s06",
+      "probe_id": "shirt_q10",
+      "scenario": "unsatisfiable",
+      "category": "shirt",
+      "query_index": 585,
+      "query_id": "B00AZIAZK2",
+      "target_id": "B001LY2VLK",
+      "source_captions": [
+        "Is more whimsical and black",
+        "is a dark t-shirt with a graphic"
+      ],
+      "original_caption": "Is more whimsical and black [SEP] is a dark t-shirt with a graphic",
+      "prompt": "Turn it into a transparent glass garment with animated flames and invisible fabric.",
+      "expected_behavior": "The fixed FashionIQ gallery is not expected to contain a full match.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q01_s01",
+      "probe_id": "toptee_q01",
+      "scenario": "in_domain",
+      "category": "toptee",
+      "query_index": 1524,
+      "query_id": "B008BT599E",
+      "target_id": "B008DO6OFK",
+      "source_captions": [
+        "The shirt is black with the word DADD.",
+        "Is a regular t-shirt with different graphic."
+      ],
+      "original_caption": "The shirt is black with the word DADD. [SEP] Is a regular t-shirt with different graphic.",
+      "prompt": "The shirt is black with the word DADD. [SEP] Is a regular t-shirt with different graphic.",
+      "expected_behavior": "Retrieve garments that satisfy the original FashionIQ modification.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q01_s02",
+      "probe_id": "toptee_q01",
+      "scenario": "paraphrase",
+      "category": "toptee",
+      "query_index": 1524,
+      "query_id": "B008BT599E",
+      "target_id": "B008DO6OFK",
+      "source_captions": [
+        "The shirt is black with the word DADD.",
+        "Is a regular t-shirt with different graphic."
+      ],
+      "original_caption": "The shirt is black with the word DADD. [SEP] Is a regular t-shirt with different graphic.",
+      "prompt": "Apply these requested changes: The shirt is black with the word DADD; also, Is a regular t-shirt with different graphic.",
+      "expected_behavior": "Remain close to the in-domain result under a meaning-preserving template change.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q01_s03",
+      "probe_id": "toptee_q01",
+      "scenario": "identity",
+      "category": "toptee",
+      "query_index": 1524,
+      "query_id": "B008BT599E",
+      "target_id": "B008DO6OFK",
+      "source_captions": [
+        "The shirt is black with the word DADD.",
+        "Is a regular t-shirt with different graphic."
+      ],
+      "original_caption": "The shirt is black with the word DADD. [SEP] Is a regular t-shirt with different graphic.",
+      "prompt": "Keep the garment exactly as it is; do not change its color, shape, material, or details.",
+      "expected_behavior": "Preserve the source garment; returning a visually close neighbour is preferable.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q01_s04",
+      "probe_id": "toptee_q01",
+      "scenario": "contradiction",
+      "category": "toptee",
+      "query_index": 1524,
+      "query_id": "B008BT599E",
+      "target_id": "B008DO6OFK",
+      "source_captions": [
+        "The shirt is black with the word DADD.",
+        "Is a regular t-shirt with different graphic."
+      ],
+      "original_caption": "The shirt is black with the word DADD. [SEP] Is a regular t-shirt with different graphic.",
+      "prompt": "Make it both sleeveless and long-sleeved, and make it both shorter and longer.",
+      "expected_behavior": "No gallery item can satisfy every mutually contradictory requirement.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q01_s05",
+      "probe_id": "toptee_q01",
+      "scenario": "ood",
+      "category": "toptee",
+      "query_index": 1524,
+      "query_id": "B008BT599E",
+      "target_id": "B008DO6OFK",
+      "source_captions": [
+        "The shirt is black with the word DADD.",
+        "Is a regular t-shirt with different graphic."
+      ],
+      "original_caption": "The shirt is black with the word DADD. [SEP] Is a regular t-shirt with different graphic.",
+      "prompt": "Make it play jazz music, increase its battery life, and make it smell like rain.",
+      "expected_behavior": "The request is outside the fashion-image domain; high-confidence visual compliance is unsupported.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q01_s06",
+      "probe_id": "toptee_q01",
+      "scenario": "unsatisfiable",
+      "category": "toptee",
+      "query_index": 1524,
+      "query_id": "B008BT599E",
+      "target_id": "B008DO6OFK",
+      "source_captions": [
+        "The shirt is black with the word DADD.",
+        "Is a regular t-shirt with different graphic."
+      ],
+      "original_caption": "The shirt is black with the word DADD. [SEP] Is a regular t-shirt with different graphic.",
+      "prompt": "Turn it into a transparent glass garment with animated flames and invisible fabric.",
+      "expected_behavior": "The fixed FashionIQ gallery is not expected to contain a full match.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q02_s01",
+      "probe_id": "toptee_q02",
+      "scenario": "in_domain",
+      "category": "toptee",
+      "query_index": 32,
+      "query_id": "B00BB9UBNU",
+      "target_id": "B005LCCOI8",
+      "source_captions": [
+        "is black and has longer sleeves",
+        "Has longer sleeves and a tighter neckline"
+      ],
+      "original_caption": "is black and has longer sleeves [SEP] Has longer sleeves and a tighter neckline",
+      "prompt": "is black and has longer sleeves [SEP] Has longer sleeves and a tighter neckline",
+      "expected_behavior": "Retrieve garments that satisfy the original FashionIQ modification.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q02_s02",
+      "probe_id": "toptee_q02",
+      "scenario": "paraphrase",
+      "category": "toptee",
+      "query_index": 32,
+      "query_id": "B00BB9UBNU",
+      "target_id": "B005LCCOI8",
+      "source_captions": [
+        "is black and has longer sleeves",
+        "Has longer sleeves and a tighter neckline"
+      ],
+      "original_caption": "is black and has longer sleeves [SEP] Has longer sleeves and a tighter neckline",
+      "prompt": "Apply these requested changes: is black and has longer sleeves; also, Has longer sleeves and a tighter neckline.",
+      "expected_behavior": "Remain close to the in-domain result under a meaning-preserving template change.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q02_s03",
+      "probe_id": "toptee_q02",
+      "scenario": "identity",
+      "category": "toptee",
+      "query_index": 32,
+      "query_id": "B00BB9UBNU",
+      "target_id": "B005LCCOI8",
+      "source_captions": [
+        "is black and has longer sleeves",
+        "Has longer sleeves and a tighter neckline"
+      ],
+      "original_caption": "is black and has longer sleeves [SEP] Has longer sleeves and a tighter neckline",
+      "prompt": "Keep the garment exactly as it is; do not change its color, shape, material, or details.",
+      "expected_behavior": "Preserve the source garment; returning a visually close neighbour is preferable.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q02_s04",
+      "probe_id": "toptee_q02",
+      "scenario": "contradiction",
+      "category": "toptee",
+      "query_index": 32,
+      "query_id": "B00BB9UBNU",
+      "target_id": "B005LCCOI8",
+      "source_captions": [
+        "is black and has longer sleeves",
+        "Has longer sleeves and a tighter neckline"
+      ],
+      "original_caption": "is black and has longer sleeves [SEP] Has longer sleeves and a tighter neckline",
+      "prompt": "Make it both sleeveless and long-sleeved, and make it both shorter and longer.",
+      "expected_behavior": "No gallery item can satisfy every mutually contradictory requirement.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q02_s05",
+      "probe_id": "toptee_q02",
+      "scenario": "ood",
+      "category": "toptee",
+      "query_index": 32,
+      "query_id": "B00BB9UBNU",
+      "target_id": "B005LCCOI8",
+      "source_captions": [
+        "is black and has longer sleeves",
+        "Has longer sleeves and a tighter neckline"
+      ],
+      "original_caption": "is black and has longer sleeves [SEP] Has longer sleeves and a tighter neckline",
+      "prompt": "Make it play jazz music, increase its battery life, and make it smell like rain.",
+      "expected_behavior": "The request is outside the fashion-image domain; high-confidence visual compliance is unsupported.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q02_s06",
+      "probe_id": "toptee_q02",
+      "scenario": "unsatisfiable",
+      "category": "toptee",
+      "query_index": 32,
+      "query_id": "B00BB9UBNU",
+      "target_id": "B005LCCOI8",
+      "source_captions": [
+        "is black and has longer sleeves",
+        "Has longer sleeves and a tighter neckline"
+      ],
+      "original_caption": "is black and has longer sleeves [SEP] Has longer sleeves and a tighter neckline",
+      "prompt": "Turn it into a transparent glass garment with animated flames and invisible fabric.",
+      "expected_behavior": "The fixed FashionIQ gallery is not expected to contain a full match.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q03_s01",
+      "probe_id": "toptee_q03",
+      "scenario": "in_domain",
+      "category": "toptee",
+      "query_index": 44,
+      "query_id": "B00BF6VD2M",
+      "target_id": "B00COYDU9I",
+      "source_captions": [
+        "is white with longer sleeves",
+        " with v neckline"
+      ],
+      "original_caption": "is white with longer sleeves [SEP]  with v neckline",
+      "prompt": "is white with longer sleeves [SEP]  with v neckline",
+      "expected_behavior": "Retrieve garments that satisfy the original FashionIQ modification.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q03_s02",
+      "probe_id": "toptee_q03",
+      "scenario": "paraphrase",
+      "category": "toptee",
+      "query_index": 44,
+      "query_id": "B00BF6VD2M",
+      "target_id": "B00COYDU9I",
+      "source_captions": [
+        "is white with longer sleeves",
+        " with v neckline"
+      ],
+      "original_caption": "is white with longer sleeves [SEP]  with v neckline",
+      "prompt": "Apply these requested changes: is white with longer sleeves; also, with v neckline.",
+      "expected_behavior": "Remain close to the in-domain result under a meaning-preserving template change.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q03_s03",
+      "probe_id": "toptee_q03",
+      "scenario": "identity",
+      "category": "toptee",
+      "query_index": 44,
+      "query_id": "B00BF6VD2M",
+      "target_id": "B00COYDU9I",
+      "source_captions": [
+        "is white with longer sleeves",
+        " with v neckline"
+      ],
+      "original_caption": "is white with longer sleeves [SEP]  with v neckline",
+      "prompt": "Keep the garment exactly as it is; do not change its color, shape, material, or details.",
+      "expected_behavior": "Preserve the source garment; returning a visually close neighbour is preferable.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q03_s04",
+      "probe_id": "toptee_q03",
+      "scenario": "contradiction",
+      "category": "toptee",
+      "query_index": 44,
+      "query_id": "B00BF6VD2M",
+      "target_id": "B00COYDU9I",
+      "source_captions": [
+        "is white with longer sleeves",
+        " with v neckline"
+      ],
+      "original_caption": "is white with longer sleeves [SEP]  with v neckline",
+      "prompt": "Make it both sleeveless and long-sleeved, and make it both shorter and longer.",
+      "expected_behavior": "No gallery item can satisfy every mutually contradictory requirement.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q03_s05",
+      "probe_id": "toptee_q03",
+      "scenario": "ood",
+      "category": "toptee",
+      "query_index": 44,
+      "query_id": "B00BF6VD2M",
+      "target_id": "B00COYDU9I",
+      "source_captions": [
+        "is white with longer sleeves",
+        " with v neckline"
+      ],
+      "original_caption": "is white with longer sleeves [SEP]  with v neckline",
+      "prompt": "Make it play jazz music, increase its battery life, and make it smell like rain.",
+      "expected_behavior": "The request is outside the fashion-image domain; high-confidence visual compliance is unsupported.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q03_s06",
+      "probe_id": "toptee_q03",
+      "scenario": "unsatisfiable",
+      "category": "toptee",
+      "query_index": 44,
+      "query_id": "B00BF6VD2M",
+      "target_id": "B00COYDU9I",
+      "source_captions": [
+        "is white with longer sleeves",
+        " with v neckline"
+      ],
+      "original_caption": "is white with longer sleeves [SEP]  with v neckline",
+      "prompt": "Turn it into a transparent glass garment with animated flames and invisible fabric.",
+      "expected_behavior": "The fixed FashionIQ gallery is not expected to contain a full match.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q04_s01",
+      "probe_id": "toptee_q04",
+      "scenario": "in_domain",
+      "category": "toptee",
+      "query_index": 646,
+      "query_id": "B00A3QE0QQ",
+      "target_id": "B00BZQZLF2",
+      "source_captions": [
+        "is lighter",
+        "has shorter sleeves and more blue"
+      ],
+      "original_caption": "is lighter [SEP] has shorter sleeves and more blue",
+      "prompt": "is lighter [SEP] has shorter sleeves and more blue",
+      "expected_behavior": "Retrieve garments that satisfy the original FashionIQ modification.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q04_s02",
+      "probe_id": "toptee_q04",
+      "scenario": "paraphrase",
+      "category": "toptee",
+      "query_index": 646,
+      "query_id": "B00A3QE0QQ",
+      "target_id": "B00BZQZLF2",
+      "source_captions": [
+        "is lighter",
+        "has shorter sleeves and more blue"
+      ],
+      "original_caption": "is lighter [SEP] has shorter sleeves and more blue",
+      "prompt": "Apply these requested changes: is lighter; also, has shorter sleeves and more blue.",
+      "expected_behavior": "Remain close to the in-domain result under a meaning-preserving template change.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q04_s03",
+      "probe_id": "toptee_q04",
+      "scenario": "identity",
+      "category": "toptee",
+      "query_index": 646,
+      "query_id": "B00A3QE0QQ",
+      "target_id": "B00BZQZLF2",
+      "source_captions": [
+        "is lighter",
+        "has shorter sleeves and more blue"
+      ],
+      "original_caption": "is lighter [SEP] has shorter sleeves and more blue",
+      "prompt": "Keep the garment exactly as it is; do not change its color, shape, material, or details.",
+      "expected_behavior": "Preserve the source garment; returning a visually close neighbour is preferable.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q04_s04",
+      "probe_id": "toptee_q04",
+      "scenario": "contradiction",
+      "category": "toptee",
+      "query_index": 646,
+      "query_id": "B00A3QE0QQ",
+      "target_id": "B00BZQZLF2",
+      "source_captions": [
+        "is lighter",
+        "has shorter sleeves and more blue"
+      ],
+      "original_caption": "is lighter [SEP] has shorter sleeves and more blue",
+      "prompt": "Make it both sleeveless and long-sleeved, and make it both shorter and longer.",
+      "expected_behavior": "No gallery item can satisfy every mutually contradictory requirement.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q04_s05",
+      "probe_id": "toptee_q04",
+      "scenario": "ood",
+      "category": "toptee",
+      "query_index": 646,
+      "query_id": "B00A3QE0QQ",
+      "target_id": "B00BZQZLF2",
+      "source_captions": [
+        "is lighter",
+        "has shorter sleeves and more blue"
+      ],
+      "original_caption": "is lighter [SEP] has shorter sleeves and more blue",
+      "prompt": "Make it play jazz music, increase its battery life, and make it smell like rain.",
+      "expected_behavior": "The request is outside the fashion-image domain; high-confidence visual compliance is unsupported.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q04_s06",
+      "probe_id": "toptee_q04",
+      "scenario": "unsatisfiable",
+      "category": "toptee",
+      "query_index": 646,
+      "query_id": "B00A3QE0QQ",
+      "target_id": "B00BZQZLF2",
+      "source_captions": [
+        "is lighter",
+        "has shorter sleeves and more blue"
+      ],
+      "original_caption": "is lighter [SEP] has shorter sleeves and more blue",
+      "prompt": "Turn it into a transparent glass garment with animated flames and invisible fabric.",
+      "expected_behavior": "The fixed FashionIQ gallery is not expected to contain a full match.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q05_s01",
+      "probe_id": "toptee_q05",
+      "scenario": "in_domain",
+      "category": "toptee",
+      "query_index": 1840,
+      "query_id": "B007TLO9D2",
+      "target_id": "B008QYK7UK",
+      "source_captions": [
+        "is more witty and less inspirational",
+        "is green and with new print."
+      ],
+      "original_caption": "is more witty and less inspirational [SEP] is green and with new print.",
+      "prompt": "is more witty and less inspirational [SEP] is green and with new print.",
+      "expected_behavior": "Retrieve garments that satisfy the original FashionIQ modification.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q05_s02",
+      "probe_id": "toptee_q05",
+      "scenario": "paraphrase",
+      "category": "toptee",
+      "query_index": 1840,
+      "query_id": "B007TLO9D2",
+      "target_id": "B008QYK7UK",
+      "source_captions": [
+        "is more witty and less inspirational",
+        "is green and with new print."
+      ],
+      "original_caption": "is more witty and less inspirational [SEP] is green and with new print.",
+      "prompt": "Apply these requested changes: is more witty and less inspirational; also, is green and with new print.",
+      "expected_behavior": "Remain close to the in-domain result under a meaning-preserving template change.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q05_s03",
+      "probe_id": "toptee_q05",
+      "scenario": "identity",
+      "category": "toptee",
+      "query_index": 1840,
+      "query_id": "B007TLO9D2",
+      "target_id": "B008QYK7UK",
+      "source_captions": [
+        "is more witty and less inspirational",
+        "is green and with new print."
+      ],
+      "original_caption": "is more witty and less inspirational [SEP] is green and with new print.",
+      "prompt": "Keep the garment exactly as it is; do not change its color, shape, material, or details.",
+      "expected_behavior": "Preserve the source garment; returning a visually close neighbour is preferable.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q05_s04",
+      "probe_id": "toptee_q05",
+      "scenario": "contradiction",
+      "category": "toptee",
+      "query_index": 1840,
+      "query_id": "B007TLO9D2",
+      "target_id": "B008QYK7UK",
+      "source_captions": [
+        "is more witty and less inspirational",
+        "is green and with new print."
+      ],
+      "original_caption": "is more witty and less inspirational [SEP] is green and with new print.",
+      "prompt": "Make it both sleeveless and long-sleeved, and make it both shorter and longer.",
+      "expected_behavior": "No gallery item can satisfy every mutually contradictory requirement.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q05_s05",
+      "probe_id": "toptee_q05",
+      "scenario": "ood",
+      "category": "toptee",
+      "query_index": 1840,
+      "query_id": "B007TLO9D2",
+      "target_id": "B008QYK7UK",
+      "source_captions": [
+        "is more witty and less inspirational",
+        "is green and with new print."
+      ],
+      "original_caption": "is more witty and less inspirational [SEP] is green and with new print.",
+      "prompt": "Make it play jazz music, increase its battery life, and make it smell like rain.",
+      "expected_behavior": "The request is outside the fashion-image domain; high-confidence visual compliance is unsupported.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q05_s06",
+      "probe_id": "toptee_q05",
+      "scenario": "unsatisfiable",
+      "category": "toptee",
+      "query_index": 1840,
+      "query_id": "B007TLO9D2",
+      "target_id": "B008QYK7UK",
+      "source_captions": [
+        "is more witty and less inspirational",
+        "is green and with new print."
+      ],
+      "original_caption": "is more witty and less inspirational [SEP] is green and with new print.",
+      "prompt": "Turn it into a transparent glass garment with animated flames and invisible fabric.",
+      "expected_behavior": "The fixed FashionIQ gallery is not expected to contain a full match.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q06_s01",
+      "probe_id": "toptee_q06",
+      "scenario": "in_domain",
+      "category": "toptee",
+      "query_index": 983,
+      "query_id": "B004U8FZE4",
+      "target_id": "B00DV1FBTK",
+      "source_captions": [
+        "is dark brown and has sleeves",
+        "Has longer sleeves and a darker pattern"
+      ],
+      "original_caption": "is dark brown and has sleeves [SEP] Has longer sleeves and a darker pattern",
+      "prompt": "is dark brown and has sleeves [SEP] Has longer sleeves and a darker pattern",
+      "expected_behavior": "Retrieve garments that satisfy the original FashionIQ modification.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q06_s02",
+      "probe_id": "toptee_q06",
+      "scenario": "paraphrase",
+      "category": "toptee",
+      "query_index": 983,
+      "query_id": "B004U8FZE4",
+      "target_id": "B00DV1FBTK",
+      "source_captions": [
+        "is dark brown and has sleeves",
+        "Has longer sleeves and a darker pattern"
+      ],
+      "original_caption": "is dark brown and has sleeves [SEP] Has longer sleeves and a darker pattern",
+      "prompt": "Apply these requested changes: is dark brown and has sleeves; also, Has longer sleeves and a darker pattern.",
+      "expected_behavior": "Remain close to the in-domain result under a meaning-preserving template change.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q06_s03",
+      "probe_id": "toptee_q06",
+      "scenario": "identity",
+      "category": "toptee",
+      "query_index": 983,
+      "query_id": "B004U8FZE4",
+      "target_id": "B00DV1FBTK",
+      "source_captions": [
+        "is dark brown and has sleeves",
+        "Has longer sleeves and a darker pattern"
+      ],
+      "original_caption": "is dark brown and has sleeves [SEP] Has longer sleeves and a darker pattern",
+      "prompt": "Keep the garment exactly as it is; do not change its color, shape, material, or details.",
+      "expected_behavior": "Preserve the source garment; returning a visually close neighbour is preferable.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q06_s04",
+      "probe_id": "toptee_q06",
+      "scenario": "contradiction",
+      "category": "toptee",
+      "query_index": 983,
+      "query_id": "B004U8FZE4",
+      "target_id": "B00DV1FBTK",
+      "source_captions": [
+        "is dark brown and has sleeves",
+        "Has longer sleeves and a darker pattern"
+      ],
+      "original_caption": "is dark brown and has sleeves [SEP] Has longer sleeves and a darker pattern",
+      "prompt": "Make it both sleeveless and long-sleeved, and make it both shorter and longer.",
+      "expected_behavior": "No gallery item can satisfy every mutually contradictory requirement.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q06_s05",
+      "probe_id": "toptee_q06",
+      "scenario": "ood",
+      "category": "toptee",
+      "query_index": 983,
+      "query_id": "B004U8FZE4",
+      "target_id": "B00DV1FBTK",
+      "source_captions": [
+        "is dark brown and has sleeves",
+        "Has longer sleeves and a darker pattern"
+      ],
+      "original_caption": "is dark brown and has sleeves [SEP] Has longer sleeves and a darker pattern",
+      "prompt": "Make it play jazz music, increase its battery life, and make it smell like rain.",
+      "expected_behavior": "The request is outside the fashion-image domain; high-confidence visual compliance is unsupported.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q06_s06",
+      "probe_id": "toptee_q06",
+      "scenario": "unsatisfiable",
+      "category": "toptee",
+      "query_index": 983,
+      "query_id": "B004U8FZE4",
+      "target_id": "B00DV1FBTK",
+      "source_captions": [
+        "is dark brown and has sleeves",
+        "Has longer sleeves and a darker pattern"
+      ],
+      "original_caption": "is dark brown and has sleeves [SEP] Has longer sleeves and a darker pattern",
+      "prompt": "Turn it into a transparent glass garment with animated flames and invisible fabric.",
+      "expected_behavior": "The fixed FashionIQ gallery is not expected to contain a full match.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q07_s01",
+      "probe_id": "toptee_q07",
+      "scenario": "in_domain",
+      "category": "toptee",
+      "query_index": 649,
+      "query_id": "B00C85FTH4",
+      "target_id": "B007S9U9SE",
+      "source_captions": [
+        "a button up and much longer",
+        "is buttoned and has collar"
+      ],
+      "original_caption": "a button up and much longer [SEP] is buttoned and has collar",
+      "prompt": "a button up and much longer [SEP] is buttoned and has collar",
+      "expected_behavior": "Retrieve garments that satisfy the original FashionIQ modification.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q07_s02",
+      "probe_id": "toptee_q07",
+      "scenario": "paraphrase",
+      "category": "toptee",
+      "query_index": 649,
+      "query_id": "B00C85FTH4",
+      "target_id": "B007S9U9SE",
+      "source_captions": [
+        "a button up and much longer",
+        "is buttoned and has collar"
+      ],
+      "original_caption": "a button up and much longer [SEP] is buttoned and has collar",
+      "prompt": "Apply these requested changes: a button up and much longer; also, is buttoned and has collar.",
+      "expected_behavior": "Remain close to the in-domain result under a meaning-preserving template change.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q07_s03",
+      "probe_id": "toptee_q07",
+      "scenario": "identity",
+      "category": "toptee",
+      "query_index": 649,
+      "query_id": "B00C85FTH4",
+      "target_id": "B007S9U9SE",
+      "source_captions": [
+        "a button up and much longer",
+        "is buttoned and has collar"
+      ],
+      "original_caption": "a button up and much longer [SEP] is buttoned and has collar",
+      "prompt": "Keep the garment exactly as it is; do not change its color, shape, material, or details.",
+      "expected_behavior": "Preserve the source garment; returning a visually close neighbour is preferable.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q07_s04",
+      "probe_id": "toptee_q07",
+      "scenario": "contradiction",
+      "category": "toptee",
+      "query_index": 649,
+      "query_id": "B00C85FTH4",
+      "target_id": "B007S9U9SE",
+      "source_captions": [
+        "a button up and much longer",
+        "is buttoned and has collar"
+      ],
+      "original_caption": "a button up and much longer [SEP] is buttoned and has collar",
+      "prompt": "Make it both sleeveless and long-sleeved, and make it both shorter and longer.",
+      "expected_behavior": "No gallery item can satisfy every mutually contradictory requirement.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q07_s05",
+      "probe_id": "toptee_q07",
+      "scenario": "ood",
+      "category": "toptee",
+      "query_index": 649,
+      "query_id": "B00C85FTH4",
+      "target_id": "B007S9U9SE",
+      "source_captions": [
+        "a button up and much longer",
+        "is buttoned and has collar"
+      ],
+      "original_caption": "a button up and much longer [SEP] is buttoned and has collar",
+      "prompt": "Make it play jazz music, increase its battery life, and make it smell like rain.",
+      "expected_behavior": "The request is outside the fashion-image domain; high-confidence visual compliance is unsupported.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q07_s06",
+      "probe_id": "toptee_q07",
+      "scenario": "unsatisfiable",
+      "category": "toptee",
+      "query_index": 649,
+      "query_id": "B00C85FTH4",
+      "target_id": "B007S9U9SE",
+      "source_captions": [
+        "a button up and much longer",
+        "is buttoned and has collar"
+      ],
+      "original_caption": "a button up and much longer [SEP] is buttoned and has collar",
+      "prompt": "Turn it into a transparent glass garment with animated flames and invisible fabric.",
+      "expected_behavior": "The fixed FashionIQ gallery is not expected to contain a full match.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q08_s01",
+      "probe_id": "toptee_q08",
+      "scenario": "in_domain",
+      "category": "toptee",
+      "query_index": 107,
+      "query_id": "B003EACZ9M",
+      "target_id": "B000YVMK30",
+      "source_captions": [
+        "is yellow colored",
+        "is yellow"
+      ],
+      "original_caption": "is yellow colored [SEP] is yellow",
+      "prompt": "is yellow colored [SEP] is yellow",
+      "expected_behavior": "Retrieve garments that satisfy the original FashionIQ modification.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q08_s02",
+      "probe_id": "toptee_q08",
+      "scenario": "paraphrase",
+      "category": "toptee",
+      "query_index": 107,
+      "query_id": "B003EACZ9M",
+      "target_id": "B000YVMK30",
+      "source_captions": [
+        "is yellow colored",
+        "is yellow"
+      ],
+      "original_caption": "is yellow colored [SEP] is yellow",
+      "prompt": "Apply these requested changes: is yellow colored; also, is yellow.",
+      "expected_behavior": "Remain close to the in-domain result under a meaning-preserving template change.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q08_s03",
+      "probe_id": "toptee_q08",
+      "scenario": "identity",
+      "category": "toptee",
+      "query_index": 107,
+      "query_id": "B003EACZ9M",
+      "target_id": "B000YVMK30",
+      "source_captions": [
+        "is yellow colored",
+        "is yellow"
+      ],
+      "original_caption": "is yellow colored [SEP] is yellow",
+      "prompt": "Keep the garment exactly as it is; do not change its color, shape, material, or details.",
+      "expected_behavior": "Preserve the source garment; returning a visually close neighbour is preferable.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q08_s04",
+      "probe_id": "toptee_q08",
+      "scenario": "contradiction",
+      "category": "toptee",
+      "query_index": 107,
+      "query_id": "B003EACZ9M",
+      "target_id": "B000YVMK30",
+      "source_captions": [
+        "is yellow colored",
+        "is yellow"
+      ],
+      "original_caption": "is yellow colored [SEP] is yellow",
+      "prompt": "Make it both sleeveless and long-sleeved, and make it both shorter and longer.",
+      "expected_behavior": "No gallery item can satisfy every mutually contradictory requirement.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q08_s05",
+      "probe_id": "toptee_q08",
+      "scenario": "ood",
+      "category": "toptee",
+      "query_index": 107,
+      "query_id": "B003EACZ9M",
+      "target_id": "B000YVMK30",
+      "source_captions": [
+        "is yellow colored",
+        "is yellow"
+      ],
+      "original_caption": "is yellow colored [SEP] is yellow",
+      "prompt": "Make it play jazz music, increase its battery life, and make it smell like rain.",
+      "expected_behavior": "The request is outside the fashion-image domain; high-confidence visual compliance is unsupported.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q08_s06",
+      "probe_id": "toptee_q08",
+      "scenario": "unsatisfiable",
+      "category": "toptee",
+      "query_index": 107,
+      "query_id": "B003EACZ9M",
+      "target_id": "B000YVMK30",
+      "source_captions": [
+        "is yellow colored",
+        "is yellow"
+      ],
+      "original_caption": "is yellow colored [SEP] is yellow",
+      "prompt": "Turn it into a transparent glass garment with animated flames and invisible fabric.",
+      "expected_behavior": "The fixed FashionIQ gallery is not expected to contain a full match.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q09_s01",
+      "probe_id": "toptee_q09",
+      "scenario": "in_domain",
+      "category": "toptee",
+      "query_index": 252,
+      "query_id": "B003IKOOTW",
+      "target_id": "B005ISP19Y",
+      "source_captions": [
+        "is black colored with sleeves",
+        "is black with white print and full sleeves on the crew neck."
+      ],
+      "original_caption": "is black colored with sleeves [SEP] is black with white print and full sleeves on the crew neck.",
+      "prompt": "is black colored with sleeves [SEP] is black with white print and full sleeves on the crew neck.",
+      "expected_behavior": "Retrieve garments that satisfy the original FashionIQ modification.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q09_s02",
+      "probe_id": "toptee_q09",
+      "scenario": "paraphrase",
+      "category": "toptee",
+      "query_index": 252,
+      "query_id": "B003IKOOTW",
+      "target_id": "B005ISP19Y",
+      "source_captions": [
+        "is black colored with sleeves",
+        "is black with white print and full sleeves on the crew neck."
+      ],
+      "original_caption": "is black colored with sleeves [SEP] is black with white print and full sleeves on the crew neck.",
+      "prompt": "Apply these requested changes: is black colored with sleeves; also, is black with white print and full sleeves on the crew neck.",
+      "expected_behavior": "Remain close to the in-domain result under a meaning-preserving template change.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q09_s03",
+      "probe_id": "toptee_q09",
+      "scenario": "identity",
+      "category": "toptee",
+      "query_index": 252,
+      "query_id": "B003IKOOTW",
+      "target_id": "B005ISP19Y",
+      "source_captions": [
+        "is black colored with sleeves",
+        "is black with white print and full sleeves on the crew neck."
+      ],
+      "original_caption": "is black colored with sleeves [SEP] is black with white print and full sleeves on the crew neck.",
+      "prompt": "Keep the garment exactly as it is; do not change its color, shape, material, or details.",
+      "expected_behavior": "Preserve the source garment; returning a visually close neighbour is preferable.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q09_s04",
+      "probe_id": "toptee_q09",
+      "scenario": "contradiction",
+      "category": "toptee",
+      "query_index": 252,
+      "query_id": "B003IKOOTW",
+      "target_id": "B005ISP19Y",
+      "source_captions": [
+        "is black colored with sleeves",
+        "is black with white print and full sleeves on the crew neck."
+      ],
+      "original_caption": "is black colored with sleeves [SEP] is black with white print and full sleeves on the crew neck.",
+      "prompt": "Make it both sleeveless and long-sleeved, and make it both shorter and longer.",
+      "expected_behavior": "No gallery item can satisfy every mutually contradictory requirement.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q09_s05",
+      "probe_id": "toptee_q09",
+      "scenario": "ood",
+      "category": "toptee",
+      "query_index": 252,
+      "query_id": "B003IKOOTW",
+      "target_id": "B005ISP19Y",
+      "source_captions": [
+        "is black colored with sleeves",
+        "is black with white print and full sleeves on the crew neck."
+      ],
+      "original_caption": "is black colored with sleeves [SEP] is black with white print and full sleeves on the crew neck.",
+      "prompt": "Make it play jazz music, increase its battery life, and make it smell like rain.",
+      "expected_behavior": "The request is outside the fashion-image domain; high-confidence visual compliance is unsupported.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q09_s06",
+      "probe_id": "toptee_q09",
+      "scenario": "unsatisfiable",
+      "category": "toptee",
+      "query_index": 252,
+      "query_id": "B003IKOOTW",
+      "target_id": "B005ISP19Y",
+      "source_captions": [
+        "is black colored with sleeves",
+        "is black with white print and full sleeves on the crew neck."
+      ],
+      "original_caption": "is black colored with sleeves [SEP] is black with white print and full sleeves on the crew neck.",
+      "prompt": "Turn it into a transparent glass garment with animated flames and invisible fabric.",
+      "expected_behavior": "The fixed FashionIQ gallery is not expected to contain a full match.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q10_s01",
+      "probe_id": "toptee_q10",
+      "scenario": "in_domain",
+      "category": "toptee",
+      "query_index": 1110,
+      "query_id": "B0094KPUK2",
+      "target_id": "B00EIWYT08",
+      "source_captions": [
+        "is longer and has longer sleeves",
+        "longer"
+      ],
+      "original_caption": "is longer and has longer sleeves [SEP] longer",
+      "prompt": "is longer and has longer sleeves [SEP] longer",
+      "expected_behavior": "Retrieve garments that satisfy the original FashionIQ modification.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q10_s02",
+      "probe_id": "toptee_q10",
+      "scenario": "paraphrase",
+      "category": "toptee",
+      "query_index": 1110,
+      "query_id": "B0094KPUK2",
+      "target_id": "B00EIWYT08",
+      "source_captions": [
+        "is longer and has longer sleeves",
+        "longer"
+      ],
+      "original_caption": "is longer and has longer sleeves [SEP] longer",
+      "prompt": "Apply these requested changes: is longer and has longer sleeves; also, longer.",
+      "expected_behavior": "Remain close to the in-domain result under a meaning-preserving template change.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q10_s03",
+      "probe_id": "toptee_q10",
+      "scenario": "identity",
+      "category": "toptee",
+      "query_index": 1110,
+      "query_id": "B0094KPUK2",
+      "target_id": "B00EIWYT08",
+      "source_captions": [
+        "is longer and has longer sleeves",
+        "longer"
+      ],
+      "original_caption": "is longer and has longer sleeves [SEP] longer",
+      "prompt": "Keep the garment exactly as it is; do not change its color, shape, material, or details.",
+      "expected_behavior": "Preserve the source garment; returning a visually close neighbour is preferable.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q10_s04",
+      "probe_id": "toptee_q10",
+      "scenario": "contradiction",
+      "category": "toptee",
+      "query_index": 1110,
+      "query_id": "B0094KPUK2",
+      "target_id": "B00EIWYT08",
+      "source_captions": [
+        "is longer and has longer sleeves",
+        "longer"
+      ],
+      "original_caption": "is longer and has longer sleeves [SEP] longer",
+      "prompt": "Make it both sleeveless and long-sleeved, and make it both shorter and longer.",
+      "expected_behavior": "No gallery item can satisfy every mutually contradictory requirement.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q10_s05",
+      "probe_id": "toptee_q10",
+      "scenario": "ood",
+      "category": "toptee",
+      "query_index": 1110,
+      "query_id": "B0094KPUK2",
+      "target_id": "B00EIWYT08",
+      "source_captions": [
+        "is longer and has longer sleeves",
+        "longer"
+      ],
+      "original_caption": "is longer and has longer sleeves [SEP] longer",
+      "prompt": "Make it play jazz music, increase its battery life, and make it smell like rain.",
+      "expected_behavior": "The request is outside the fashion-image domain; high-confidence visual compliance is unsupported.",
+      "selection_seed": 42
+    },
+    {
+      "prompt_id": "toptee_q10_s06",
+      "probe_id": "toptee_q10",
+      "scenario": "unsatisfiable",
+      "category": "toptee",
+      "query_index": 1110,
+      "query_id": "B0094KPUK2",
+      "target_id": "B00EIWYT08",
+      "source_captions": [
+        "is longer and has longer sleeves",
+        "longer"
+      ],
+      "original_caption": "is longer and has longer sleeves [SEP] longer",
+      "prompt": "Turn it into a transparent glass garment with animated flames and invisible fabric.",
+      "expected_behavior": "The fixed FashionIQ gallery is not expected to contain a full match.",
+      "selection_seed": 42
+    }
+  ]
+}

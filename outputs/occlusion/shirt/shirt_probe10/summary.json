@@ -1,0 +1,383 @@
+{
+  "schema_version": 1,
+  "config": "configs/fashioniq_l40_shared.yaml",
+  "checkpoint": "outputs/fashioniq_improved/l40_shared_seed42/shirt/best.pt",
+  "checkpoint_epoch": 45,
+  "category": "shirt",
+  "probe_ids": [
+    "shirt_q01",
+    "shirt_q02",
+    "shirt_q03",
+    "shirt_q04",
+    "shirt_q05",
+    "shirt_q06",
+    "shirt_q07",
+    "shirt_q08",
+    "shirt_q09",
+    "shirt_q10"
+  ],
+  "n_probes": 10,
+  "ratios": [
+    0.1,
+    0.2,
+    0.3
+  ],
+  "mask_definition": "Select equal-count highest/lowest patches from the 7x7 average-stage attention map; set their pixels to ImageNet mean (zero after normalization).",
+  "primary_endpoint": "Drop in similarity and increase in rank of the unoccluded query's top-1 gallery result.",
+  "secondary_endpoint": "FashionIQ ground-truth target similarity/rank change.",
+  "inference_only": true,
+  "statistics": "Paired high-minus-low bootstrap 95% CI and exact two-sided sign-flip p-value.",
+  "by_ratio": {
+    "10%": {
+      "reference_similarity_drop": {
+        "n": 10,
+        "mean_high": 0.0015444308519363403,
+        "mean_low": -0.0017534717917442322,
+        "mean_high_minus_low": 0.0032979026436805725,
+        "bootstrap_95_ci": [
+          0.0006435561552643777,
+          0.005660129077732562
+        ],
+        "sign_flip_pvalue": 0.0390625,
+        "per_probe_high_minus_low": {
+          "shirt_q01": 0.009745091199874878,
+          "shirt_q02": 0.002732217311859131,
+          "shirt_q03": 0.0062604546546936035,
+          "shirt_q04": -0.005857706069946289,
+          "shirt_q05": 0.0026878416538238525,
+          "shirt_q06": 0.006889283657073975,
+          "shirt_q07": 0.0028042346239089966,
+          "shirt_q08": 0.0026586949825286865,
+          "shirt_q09": 0.004570126533508301,
+          "shirt_q10": 0.0004887878894805908
+        }
+      },
+      "reference_rank_increase": {
+        "n": 10,
+        "mean_high": 0.3,
+        "mean_low": 0.0,
+        "mean_high_minus_low": 0.3,
+        "bootstrap_95_ci": [
+          0.0,
+          0.8
+        ],
+        "sign_flip_pvalue": 0.5,
+        "per_probe_high_minus_low": {
+          "shirt_q01": 2.0,
+          "shirt_q02": 0.0,
+          "shirt_q03": 0.0,
+          "shirt_q04": 0.0,
+          "shirt_q05": 0.0,
+          "shirt_q06": 1.0,
+          "shirt_q07": 0.0,
+          "shirt_q08": 0.0,
+          "shirt_q09": 0.0,
+          "shirt_q10": 0.0
+        }
+      },
+      "query_embedding_cosine_drop": {
+        "n": 10,
+        "mean_high": 0.011221134662628173,
+        "mean_low": 0.0011921525001525879,
+        "mean_high_minus_low": 0.010028982162475586,
+        "bootstrap_95_ci": [
+          0.002301973402500154,
+          0.020247574001550674
+        ],
+        "sign_flip_pvalue": 0.0078125,
+        "per_probe_high_minus_low": {
+          "shirt_q01": 0.04832339286804199,
+          "shirt_q02": -0.0003345608711242676,
+          "shirt_q03": 0.002141237258911133,
+          "shirt_q04": 0.011844098567962646,
+          "shirt_q05": 0.003928720951080322,
+          "shirt_q06": 0.025903284549713135,
+          "shirt_q07": 0.007467985153198242,
+          "shirt_q08": -0.00015294551849365234,
+          "shirt_q09": 0.0005164146423339844,
+          "shirt_q10": 0.0006521940231323242
+        }
+      },
+      "target_similarity_drop": {
+        "n": 10,
+        "mean_high": -0.002027980610728264,
+        "mean_low": -0.0026698928326368333,
+        "mean_high_minus_low": 0.0006419122219085693,
+        "bootstrap_95_ci": [
+          -0.004216742962598799,
+          0.005592075847089279
+        ],
+        "sign_flip_pvalue": 0.81640625,
+        "per_probe_high_minus_low": {
+          "shirt_q01": 0.013678297400474548,
+          "shirt_q02": 0.0046617984771728516,
+          "shirt_q03": -0.0011894404888153076,
+          "shirt_q04": -0.012518271803855896,
+          "shirt_q05": 0.008647948503494263,
+          "shirt_q06": -0.010884791612625122,
+          "shirt_q07": 0.0033962130546569824,
+          "shirt_q08": 0.006107032299041748,
+          "shirt_q09": -0.006244063377380371,
+          "shirt_q10": 0.0007643997669219971
+        }
+      },
+      "target_rank_increase": {
+        "n": 10,
+        "mean_high": 7.4,
+        "mean_low": -8.4,
+        "mean_high_minus_low": 15.8,
+        "bootstrap_95_ci": [
+          -4.2,
+          46.8
+        ],
+        "sign_flip_pvalue": 0.359375,
+        "per_probe_high_minus_low": {
+          "shirt_q01": 24.0,
+          "shirt_q02": 3.0,
+          "shirt_q03": -2.0,
+          "shirt_q04": -17.0,
+          "shirt_q05": 25.0,
+          "shirt_q06": -6.0,
+          "shirt_q07": 141.0,
+          "shirt_q08": 2.0,
+          "shirt_q09": 0.0,
+          "shirt_q10": -12.0
+        }
+      }
+    },
+    "20%": {
+      "reference_similarity_drop": {
+        "n": 10,
+        "mean_high": 0.004072315990924835,
+        "mean_low": -0.0006237134337425231,
+        "mean_high_minus_low": 0.004696029424667359,
+        "bootstrap_95_ci": [
+          -0.00040592849254608156,
+          0.010456921830773354
+        ],
+        "sign_flip_pvalue": 0.12890625,
+        "per_probe_high_minus_low": {
+          "shirt_q01": 0.012301921844482422,
+          "shirt_q02": 0.0035054683685302734,
+          "shirt_q03": -0.009517073631286621,
+          "shirt_q04": 0.02423211932182312,
+          "shirt_q05": 0.00023615360260009766,
+          "shirt_q06": 0.00846138596534729,
+          "shirt_q07": -0.0019874274730682373,
+          "shirt_q08": 0.00845840573310852,
+          "shirt_q09": -4.4018030166625977e-05,
+          "shirt_q10": 0.0013133585453033447
+        }
+      },
+      "reference_rank_increase": {
+        "n": 10,
+        "mean_high": 0.7,
+        "mean_low": 0.0,
+        "mean_high_minus_low": 0.7,
+        "bootstrap_95_ci": [
+          0.0,
+          1.6
+        ],
+        "sign_flip_pvalue": 0.25,
+        "per_probe_high_minus_low": {
+          "shirt_q01": 1.0,
+          "shirt_q02": 0.0,
+          "shirt_q03": 0.0,
+          "shirt_q04": 4.0,
+          "shirt_q05": 0.0,
+          "shirt_q06": 2.0,
+          "shirt_q07": 0.0,
+          "shirt_q08": 0.0,
+          "shirt_q09": 0.0,
+          "shirt_q10": 0.0
+        }
+      },
+      "query_embedding_cosine_drop": {
+        "n": 10,
+        "mean_high": 0.017145073413848876,
+        "mean_low": 0.0023324012756347655,
+        "mean_high_minus_low": 0.014812672138214111,
+        "bootstrap_95_ci": [
+          0.002639225423336031,
+          0.028142525255680086
+        ],
+        "sign_flip_pvalue": 0.01953125,
+        "per_probe_high_minus_low": {
+          "shirt_q01": 0.047659456729888916,
+          "shirt_q02": -2.008676528930664e-05,
+          "shirt_q03": 0.0030173063278198242,
+          "shirt_q04": 0.04376262426376343,
+          "shirt_q05": 0.0026383399963378906,
+          "shirt_q06": 0.04451143741607666,
+          "shirt_q07": 0.006647050380706787,
+          "shirt_q08": 0.00013625621795654297,
+          "shirt_q09": 0.0009940266609191895,
+          "shirt_q10": -0.0012196898460388184
+        }
+      },
+      "target_similarity_drop": {
+        "n": 10,
+        "mean_high": -0.004794613271951675,
+        "mean_low": -0.004214354604482651,
+        "mean_high_minus_low": -0.0005802586674690247,
+        "bootstrap_95_ci": [
+          -0.009712961241602895,
+          0.005954643376171589
+        ],
+        "sign_flip_pvalue": 0.94140625,
+        "per_probe_high_minus_low": {
+          "shirt_q01": 0.012534737586975098,
+          "shirt_q02": 0.008740663528442383,
+          "shirt_q03": 0.00719115138053894,
+          "shirt_q04": -0.035245418548583984,
+          "shirt_q05": 0.0006134957075119019,
+          "shirt_q06": -0.001951664686203003,
+          "shirt_q07": 0.0019311308860778809,
+          "shirt_q08": 0.005910903215408325,
+          "shirt_q09": -0.008786261081695557,
+          "shirt_q10": 0.0032586753368377686
+        }
+      },
+      "target_rank_increase": {
+        "n": 10,
+        "mean_high": -12.4,
+        "mean_low": -7.7,
+        "mean_high_minus_low": -4.7,
+        "bootstrap_95_ci": [
+          -13.80249999999999,
+          2.3
+        ],
+        "sign_flip_pvalue": 0.48828125,
+        "per_probe_high_minus_low": {
+          "shirt_q01": 2.0,
+          "shirt_q02": 6.0,
+          "shirt_q03": 1.0,
+          "shirt_q04": -36.0,
+          "shirt_q05": 4.0,
+          "shirt_q06": -2.0,
+          "shirt_q07": -25.0,
+          "shirt_q08": 2.0,
+          "shirt_q09": 0.0,
+          "shirt_q10": 1.0
+        }
+      }
+    },
+    "30%": {
+      "reference_similarity_drop": {
+        "n": 10,
+        "mean_high": 0.005261586606502533,
+        "mean_low": -3.8865208625793454e-05,
+        "mean_high_minus_low": 0.005300451815128326,
+        "bootstrap_95_ci": [
+          -0.002515488490462303,
+          0.013380259685218332
+        ],
+        "sign_flip_pvalue": 0.251953125,
+        "per_probe_high_minus_low": {
+          "shirt_q01": 0.015176504850387573,
+          "shirt_q02": -0.0023086369037628174,
+          "shirt_q03": -0.015131980180740356,
+          "shirt_q04": 0.024046242237091064,
+          "shirt_q05": 0.022915691137313843,
+          "shirt_q06": 0.0008613467216491699,
+          "shirt_q07": -0.011116638779640198,
+          "shirt_q08": 0.011501550674438477,
+          "shirt_q09": -0.0013547539710998535,
+          "shirt_q10": 0.008415192365646362
+        }
+      },
+      "reference_rank_increase": {
+        "n": 10,
+        "mean_high": 1.0,
+        "mean_low": 0.2,
+        "mean_high_minus_low": 0.8,
+        "bootstrap_95_ci": [
+          0.0,
+          1.7
+        ],
+        "sign_flip_pvalue": 0.1875,
+        "per_probe_high_minus_low": {
+          "shirt_q01": 2.0,
+          "shirt_q02": 0.0,
+          "shirt_q03": 0.0,
+          "shirt_q04": 4.0,
+          "shirt_q05": 2.0,
+          "shirt_q06": 1.0,
+          "shirt_q07": -1.0,
+          "shirt_q08": 0.0,
+          "shirt_q09": 0.0,
+          "shirt_q10": 0.0
+        }
+      },
+      "query_embedding_cosine_drop": {
+        "n": 10,
+        "mean_high": 0.024662959575653075,
+        "mean_low": 0.003458279371261597,
+        "mean_high_minus_low": 0.02120468020439148,
+        "bootstrap_95_ci": [
+          0.007802681475877778,
+          0.03631318271160125
+        ],
+        "sign_flip_pvalue": 0.001953125,
+        "per_probe_high_minus_low": {
+          "shirt_q01": 0.048732876777648926,
+          "shirt_q02": 0.001652061939239502,
+          "shirt_q03": 0.002710878849029541,
+          "shirt_q04": 0.05231350660324097,
+          "shirt_q05": 0.016966700553894043,
+          "shirt_q06": 0.0633118748664856,
+          "shirt_q07": 0.019873619079589844,
+          "shirt_q08": 0.0015413761138916016,
+          "shirt_q09": 0.003919661045074463,
+          "shirt_q10": 0.0010242462158203125
+        }
+      },
+      "target_similarity_drop": {
+        "n": 10,
+        "mean_high": -0.006892133131623268,
+        "mean_low": -0.0033384256064891817,
+        "mean_high_minus_low": -0.0035537075251340865,
+        "bootstrap_95_ci": [
+          -0.013437957847490906,
+          0.0035825849976390553
+        ],
+        "sign_flip_pvalue": 0.634765625,
+        "per_probe_high_minus_low": {
+          "shirt_q01": 0.012477241456508636,
+          "shirt_q02": -0.0017670392990112305,
+          "shirt_q03": -0.002183377742767334,
+          "shirt_q04": -0.04237926006317139,
+          "shirt_q05": -0.001452028751373291,
+          "shirt_q06": -0.005530864000320435,
+          "shirt_q07": 0.006295289844274521,
+          "shirt_q08": 0.007390201091766357,
+          "shirt_q09": -0.005721628665924072,
+          "shirt_q10": -0.002665609121322632
+        }
+      },
+      "target_rank_increase": {
+        "n": 10,
+        "mean_high": -8.5,
+        "mean_low": -5.0,
+        "mean_high_minus_low": -3.5,
+        "bootstrap_95_ci": [
+          -12.9,
+          3.8
+        ],
+        "sign_flip_pvalue": 0.609375,
+        "per_probe_high_minus_low": {
+          "shirt_q01": -5.0,
+          "shirt_q02": 2.0,
+          "shirt_q03": 3.0,
+          "shirt_q04": -40.0,
+          "shirt_q05": -4.0,
+          "shirt_q06": -1.0,
+          "shirt_q07": 16.0,
+          "shirt_q08": 5.0,
+          "shirt_q09": 0.0,
+          "shirt_q10": -11.0
+        }
+      }
+    }
+  }
+}

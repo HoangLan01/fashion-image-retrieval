@@ -1,0 +1,72 @@
+seed: 42
+dataset:
+  name: fashioniq
+  root: data/fashioniq_lexical_holdout
+  categories:
+  - dress
+  - shirt
+  - toptee
+  caption_mode: concat
+  image_size: 224
+  resize_size: 256
+  num_workers: 4
+  train_split: train
+  val_split: val
+model:
+  embedding_dim: 768
+  image_encoder:
+    type: swin
+    name: swin_base_patch4_window7_224.ms_in22k_ft_in1k
+    pretrained: true
+    out_indices:
+    - 2
+    - 3
+    pool_size: 7
+    freeze: false
+    cache_dir: .cache/huggingface/hub
+  text_encoder:
+    type: distilbert
+    name: distilbert-base-uncased
+    max_length: 128
+    freeze: false
+    cache_dir: .cache/huggingface/hub
+  composition:
+    num_blocks: 3
+    num_heads: 8
+    ffn_multiplier: 4
+    dropout: 0.1
+loss:
+  temperature: 0.07
+  symmetric: true
+  label_smoothing: 0.1
+optimizer:
+  name: adamw
+  image_lr: 1.0e-05
+  text_lr: 1.0e-05
+  composition_lr: 0.0003
+  weight_decay: 0.01
+  momentum: 0.9
+scheduler:
+  name: cosine
+  step_size: 10
+  gamma: 0.1
+  eta_min: 1.0e-06
+training:
+  epochs: 60
+  batch_size: 8
+  grad_accumulation: 4
+  amp: true
+  clip_grad_norm: 1.0
+  eval_every: 5
+  checkpoint_every: 1
+  output_dir: outputs/fashioniq_lexical_holdout
+  run_name: seed42
+evaluation:
+  batch_size: 16
+  recall_ks:
+  - 10
+  - 50
+  exclude_query: true
+_meta:
+  config_path: configs/fashioniq_lexical_holdout.yaml
+  config_stem: fashioniq_lexical_holdout

@@ -1,0 +1,15 @@
+{
+  "average": null,
+  "categories": {
+    "shirt": {
+      "R@10": 7.18562874251497,
+      "R@50": 19.760479041916167
+    }
+  },
+  "checkpoint": "outputs/fashioniq_lexical_holdout/seed42/shirt/best.pt",
+  "checkpoint_category": "shirt",
+  "checkpoint_epoch": 55,
+  "config": "configs/fashioniq_lexical_holdout_targeted.yaml",
+  "created_at_utc": "2026-07-15T06:29:29.636612+00:00",
+  "device": "cuda:0"
+}

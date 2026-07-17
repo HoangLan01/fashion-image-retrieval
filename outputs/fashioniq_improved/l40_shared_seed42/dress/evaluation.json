@@ -1,0 +1,15 @@
+{
+  "average": null,
+  "categories": {
+    "dress": {
+      "R@10": 19.633118492811104,
+      "R@50": 44.76945959345563
+    }
+  },
+  "checkpoint": "outputs/fashioniq_improved/l40_shared_seed42/dress/best.pt",
+  "checkpoint_category": "dress",
+  "checkpoint_epoch": 60,
+  "config": "configs/fashioniq_l40_shared.yaml",
+  "created_at_utc": "2026-07-14T03:41:50.717270+00:00",
+  "device": "cuda:0"
+}

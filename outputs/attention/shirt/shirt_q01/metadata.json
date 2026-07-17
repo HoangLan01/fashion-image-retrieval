@@ -1,0 +1,131 @@
+{
+  "schema_version": 1,
+  "config": "configs/fashioniq_l40_shared.yaml",
+  "checkpoint": "outputs/fashioniq_improved/l40_shared_seed42/shirt/best.pt",
+  "checkpoint_epoch": 45,
+  "category": "shirt",
+  "probe_id": "shirt_q01",
+  "query_index": 1746,
+  "query_id": "B003JY6WY2",
+  "target_id": "B004JHRX5A",
+  "device": "cuda:0",
+  "amp": true,
+  "attention_shape": [
+    2,
+    3,
+    8,
+    108
+  ],
+  "image_token_count": 98,
+  "stage_layout": "Stage 3: first 49 tokens; Stage 4: next 49 tokens.",
+  "flow_definition": "Multiply per-token alpha across composition blocks in log-space, min-max per head, then average heads.",
+  "prompts": [
+    {
+      "prompt": "Make the shirt have longer sleeves.",
+      "top_ids": [
+        "B008N66KPM",
+        "B004RDZ39E",
+        "B008AL3XB4",
+        "B008N83ZLC",
+        "B0076AQKM4"
+      ],
+      "top_scores": [
+        0.3545292615890503,
+        0.3509441614151001,
+        0.3148186504840851,
+        0.31193673610687256,
+        0.30350369215011597
+      ],
+      "original_target_rank": 4718,
+      "text_tokens": [
+        {
+          "word": "make",
+          "score": 1.0
+        },
+        {
+          "word": "the",
+          "score": 0.3477923572063446
+        },
+        {
+          "word": "shirt",
+          "score": 0.30891498923301697
+        },
+        {
+          "word": "have",
+          "score": 0.29906728863716125
+        },
+        {
+          "word": "longer",
+          "score": 0.0
+        },
+        {
+          "word": "sleeves",
+          "score": 0.2582215964794159
+        },
+        {
+          "word": ".",
+          "score": 0.5666491985321045
+        }
+      ]
+    },
+    {
+      "prompt": "Make the shirt have a different graphic.",
+      "top_ids": [
+        "B002S0NVEW",
+        "B002HEWWVW",
+        "B006JI53NQ",
+        "B007E6M3UI",
+        "B003ICY3OQ"
+      ],
+      "top_scores": [
+        0.3556361794471741,
+        0.34966447949409485,
+        0.34950578212738037,
+        0.3442264497280121,
+        0.3416510820388794
+      ],
+      "original_target_rank": 1963,
+      "text_tokens": [
+        {
+          "word": "make",
+          "score": 0.6419358253479004
+        },
+        {
+          "word": "the",
+          "score": 0.4503623843193054
+        },
+        {
+          "word": "shirt",
+          "score": 0.25268930196762085
+        },
+        {
+          "word": "have",
+          "score": 1.0
+        },
+        {
+          "word": "a",
+          "score": 0.8335092663764954
+        },
+        {
+          "word": "different",
+          "score": 0.729108452796936
+        },
+        {
+          "word": "graphic",
+          "score": 0.0
+        },
+        {
+          "word": ".",
+          "score": 0.4423733651638031
+        }
+      ]
+    }
+  ],
+  "comparison_first_two_prompts": {
+    "pearson": 0.8779920935630798,
+    "jensen_shannon": 0.040170890670943246,
+    "top_k_overlap": 0,
+    "top_k_jaccard": 0.0
+  },
+  "interpretation_caveat": "Attention variation is evidence of text-conditioned selection, not a causal explanation by itself."
+}

@@ -9,7 +9,6 @@ venv/
 env/
 .cache/
 
-outputs/
 /data/
 /images/
 *.pt

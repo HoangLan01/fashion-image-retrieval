@@ -1,0 +1,15 @@
+{
+  "average": null,
+  "categories": {
+    "shirt": {
+      "R@10": 16.830225711481845,
+      "R@50": 40.77526987242395
+    }
+  },
+  "checkpoint": "outputs/fashioniq_improved/l40_shared_seed42/shirt/best.pt",
+  "checkpoint_category": "shirt",
+  "checkpoint_epoch": 45,
+  "config": "configs/fashioniq_l40_shared.yaml",
+  "created_at_utc": "2026-07-14T10:27:06.361512+00:00",
+  "device": "cuda:0"
+}
